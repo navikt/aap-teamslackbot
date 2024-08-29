@@ -29,6 +29,7 @@ spec:
       external:
         - host: slack.com
         - host: api.slack.com
+        - host: wss-primary.slack.com
   env:
     - name: PORT
       value: "8080"
