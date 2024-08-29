@@ -1,0 +1,51 @@
+name: Build and deploy main
+
+on:
+  workflow_dispatch: # Allow manually triggered workflow run
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    secrets: inherit
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      image: ${{ steps.docker-build-push.outputs.image }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Inject slug/short variables
+        uses: rlespinasse/github-slug-action@v4
+
+      - name: Build and publish docker image
+        uses: nais/docker-build-push@v0
+        id: docker-build-push
+        with:
+          team: aap
+          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
+          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
+          image_suffix: ${{ github.workflow }}
+          tag: ${{ env.GITHUB_REF_SLUG }}
+      - name: Print docker tag
+        run: echo 'Docker-tag er ${{ steps.docker-build-push.outputs.image }} ' >> $GITHUB_STEP_SUMMARY
+  deploy:
+    name: dev-cluster
+    needs: build
+    secrets: inherit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: nais/deploy/actions/deploy@v2
+        env:
+          CLUSTER: dev-gcp
+          RESOURCE: .nais/dev.yaml
+          VAR: image=${{ needs.build.outputs.image }}
