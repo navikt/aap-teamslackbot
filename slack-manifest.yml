@@ -4,12 +4,8 @@ display_information:
   background_color: '#014421'
 features:
   bot_user:
-    display_name: Lagspill
+    display_name: Team AAP
     always_online: false
-  slash_commands:
-    - command: /lagspill
-      description: Administrer lagspillene i denne kanalen
-      should_escape: false
 oauth_config:
   scopes:
     bot:
