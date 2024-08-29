@@ -19,8 +19,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Inject slug/short variables
-        uses: rlespinasse/github-slug-action@v4
       - name: Build and publish docker image
         uses: nais/docker-build-push@v0
         id: docker-build-push
@@ -28,9 +26,9 @@ jobs:
           team: aap
           identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
           project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
-          image_suffix: ${{ github.workflow }}
-          docker_context: apps/${{ github.workflow }}/
-          tag: ${{ env.GITHUB_REF_SLUG }}
+          tag: ${{ github.sha }}
+          build_args: |
+            APP_NAME=${{ github.event.repository.name }}
       - name: Print docker tag
         run: echo 'Docker-tag er ${{ steps.docker-build-push.outputs.image }} ' >> $GITHUB_STEP_SUMMARY
   deploy:
@@ -43,6 +41,12 @@ jobs:
       id-token: 'write'
     steps:
       - uses: actions/checkout@v4
+      - uses: nais/login@v0
+        id: login
+        with:
+          team: aap
+          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
+          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
       - uses: nais/deploy/actions/deploy@v2
         env:
           CLUSTER: dev-gcp
