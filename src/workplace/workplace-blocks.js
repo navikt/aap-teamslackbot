@@ -6,7 +6,7 @@ const blocks = [
         "type": "section",
         "text": {
             "type": "mrkdwn",
-            "text": ":zoom-icon: Hjemme / Zoom \`2\`\n <@UR5LG64LD>"
+            "text": ":zoom-icon: Hjemme / Zoom \`2\`\n <@UR5LG64LD>, <@vetle.hollund>"
         },
         "accessory": {
             "type": "button",

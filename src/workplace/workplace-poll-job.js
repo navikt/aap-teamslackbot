@@ -38,7 +38,7 @@ const setupJob = (app) => {
     };
 
     // const time = '0 */5 10 * * 1-5' // Test cron
-    const time = '50 15 * * 1-5' // kl 11:11:11, man-fre, alle uker, alle måneder
+    const time = '00 14 * * 1-5' // kl 11:11:11, man-fre, alle uker, alle måneder
 
     console.log(`Init cronjob with crontime: ${time}`)
 
