@@ -17,7 +17,7 @@ const setupJob = (app) => {
         if (dayNumber === 5) {
             title = "Endelig helg! :star-struck: Hvor skal du jobbe på mandag?"
         } else {
-            title = `Hvor skal du jobbe i morgen, ${ukedagNavn(dayNumber + 1)} ${imorgenDateString()}`
+            title = `Hvor skal du jobbe i morgen, ${ukedagNavn(dayNumber + 1)} ${imorgenDateString()}?`
         }
 
         try {
