@@ -13,10 +13,11 @@ const setupJob = (app) => {
         console.log(`Running job @ ${now()}`)
 
         let title;
-        if (new Date().getDay() === 5) {
+        const dayNumber = new Date().getDay();
+        if (dayNumber === 5) {
             title = "Endelig helg! :star-struck: Hvor skal du jobbe på mandag?"
         } else {
-            title = "Hvor skal du jobbe i morgen?"
+            title = `Hvor skal du jobbe i morgen, ${ukedagNavn(dayNumber + 1)} ${imorgenDateString()}`
         }
 
         try {
@@ -38,13 +39,24 @@ const setupJob = (app) => {
     };
 
     // const time = '0 */5 10 * * 1-5' // Test cron
-    const time = '00 14 * * 1-5' // kl 11:11:11, man-fre, alle uker, alle måneder
+    const time = '10 30 * * 1-5' // kl 11:11:11, man-fre, alle uker, alle måneder
 
     console.log(`Init cronjob with crontime: ${time}`)
 
     const job = new CronJob(time, onTick, null, false, TIMEZONE)
 
     job.start()
+}
+function ukedagNavn(dayNumber) {
+    const dayNames = ['Søndag', 'Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag']
+    return dayNames[dayNumber];
+}
+function imorgenDateString() {
+    const today = new Date()
+    const tomorrow = new Date(today)
+    tomorrow.setDate(today.getDate() + 1)
+    const monthNames = ['Januar', 'Februar','Mars', 'April','Mai', 'Juni','Juli', 'August','September','Oktober', 'November', 'Desember']
+    return `${tomorrow.getDate()}. ${monthNames[tomorrow.getMonth()]}`
 }
 
 module.exports = setupJob

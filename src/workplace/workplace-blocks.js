@@ -6,7 +6,7 @@ const blocks = [
         "type": "section",
         "text": {
             "type": "mrkdwn",
-            "text": ":zoom-icon: Hjemme / Zoom \`2\`\n <@UR5LG64LD>, <@vetle.hollund>"
+            "text": ":zoom-icon: Hjemme / Zoom \`2\`\n <@UR5LG64LD>, <@U03LBKLNNAF>"
         },
         "accessory": {
             "type": "button",
@@ -67,6 +67,23 @@ const blocks = [
                 "emoji": true
             },
             "value": "sick",
+            "action_id": "button_select_workplace"
+        }
+    },
+    {
+        "type": "section",
+        "text": {
+            "type": "mrkdwn",
+            "text": ":javazone: JavaZone"
+        },
+        "accessory": {
+            "type": "button",
+            "text": {
+                "type": "plain_text",
+                "text": ":javazone:",
+                "emoji": true
+            },
+            "value": "javazone",
             "action_id": "button_select_workplace"
         }
     },
