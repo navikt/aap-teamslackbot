@@ -74,23 +74,6 @@ const blocks = [
         "type": "section",
         "text": {
             "type": "mrkdwn",
-            "text": ":javazone: JavaZone"
-        },
-        "accessory": {
-            "type": "button",
-            "text": {
-                "type": "plain_text",
-                "text": ":javazone:",
-                "emoji": true
-            },
-            "value": "javazone",
-            "action_id": "button_select_workplace"
-        }
-    },
-    {
-        "type": "section",
-        "text": {
-            "type": "mrkdwn",
             "text": ":shrug: Vet ikke ..."
         },
         "accessory": {
