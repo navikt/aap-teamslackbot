@@ -12,8 +12,13 @@ const setupJob = (app) => {
     const onTick = async () => {
         console.log(`Running job @ ${now()}`)
 
+        let title;
         const dayNumber = new Date().getDay();
-        const title = `Hvor skal du jobbe i dag, ${ukedagNavn(dayNumber)} ${dateString()}?`
+        if (dayNumber === 5) {
+            title = "Endelig helg! :star-struck: Hvor skal du jobbe på mandag?"
+        } else {
+            title = `Hvor skal du jobbe i morgen, ${ukedagNavn(dayNumber + 1)} ${imorgenDateString()}?`
+        }
 
         try {
             const result = await app.client.chat.postMessage({
@@ -34,7 +39,7 @@ const setupJob = (app) => {
     };
 
     // const time = '0 */5 10 * * 1-5' // Test cron
-    const time = '00 07 * * 1-5' // kl 11:11:11, man-fre, alle uker, alle måneder
+    const time = '00 14 * * 1-5' // kl 11:11:11, man-fre, alle uker, alle måneder
 
     console.log(`Init cronjob with crontime: ${time}`)
 
@@ -46,10 +51,12 @@ function ukedagNavn(dayNumber) {
     const dayNames = ['Søndag', 'Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag']
     return dayNames[dayNumber];
 }
-function dateString() {
+function imorgenDateString() {
     const today = new Date()
+    const tomorrow = new Date(today)
+    tomorrow.setDate(today.getDate() + 1)
     const monthNames = ['Januar', 'Februar','Mars', 'April','Mai', 'Juni','Juli', 'August','September','Oktober', 'November', 'Desember']
-    return `${today.getDate()}. ${monthNames[today.getMonth()]}`
+    return `${tomorrow.getDate()}. ${monthNames[tomorrow.getMonth()]}`
 }
 
 module.exports = setupJob
