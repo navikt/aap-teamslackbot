@@ -24,6 +24,11 @@ spec:
       memory: 128Mi
   ingresses:
     - https://aap-teamslackbot.ekstern.dev.nav.no
+  observability:
+    logging:
+      destinations:
+        - id: elastic
+        - id: loki    
   accessPolicy:
     outbound:
       external:
