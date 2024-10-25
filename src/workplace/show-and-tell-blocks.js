@@ -1,4 +1,4 @@
-export const showAndTellBlocks = (datoString) => {
+const showAndTellBlocks = (datoString) => {
     return [
     {
         "type": "section",
@@ -26,3 +26,5 @@ export const showAndTellBlocks = (datoString) => {
     }
 ]
 }
+
+module.exports = showAndTellBlocks;

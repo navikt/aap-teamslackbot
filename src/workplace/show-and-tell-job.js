@@ -1,6 +1,5 @@
 const CronJob = require('cron').CronJob
-const initWorkplaceBlocks = require("./workplace-blocks")
-const {showAndTellBlocks} = require("./show-and-tell-blocks");
+const showAndTellBlocks = require("./show-and-tell-blocks");
 
 const TIMEZONE = 'Europe/Oslo'
 
