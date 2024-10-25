@@ -4,7 +4,7 @@ const showAndTellBlocks = (datoString) => {
         "type": "section",
         "text": {
             "type": "mrkdwn",
-            "text": `:circus_tent: Show & Tell ${datoString} \n Hva har du gjort denne uken som du kan vise eller snakke om i dag`
+            "text": `:circus_tent: Show & Tell ${datoString} \n Hva har du gjort denne uken som du kan vise eller snakke om i dag?`
         }
     },
     // {
