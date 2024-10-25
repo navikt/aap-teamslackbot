@@ -2,6 +2,8 @@ const {App} = require("@slack/bolt");
 const setupWorkplaceJob = require('./workplace/workplace-poll-job')
 const setupWorkplaceAction = require("./workplace/select-workplace-action");
 const setupEventListener = require("./events");
+const setupShowAndTellJob = require("./workplace/show-and-tell-job");
+
 
 const PORT = process.env.PORT || 3000
 
@@ -27,6 +29,7 @@ const app = new App({
     await app.start(PORT);
 
     setupWorkplaceJob(app)
+    setupShowAndTellJob(app)
 
     console.log(`⚡️ Bolt app is running on port ${PORT}!`);
 })();
