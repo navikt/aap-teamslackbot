@@ -34,7 +34,7 @@ const setupShowAndTellJob = (app) => {
     };
 
     // const time = '0 */5 10 * * 1-5' // Test cron
-    const time = '00 09 * * 5' // kl 11:11:11, man-fre, alle uker, alle måneder
+    const time = '10 09 * * 5' // kl 11:11:11, man-fre, alle uker, alle måneder
 
     console.log(`Init cronjob showandtell with crontime: ${time}`)
 
