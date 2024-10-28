@@ -74,7 +74,7 @@ const blocks = [
         "type": "section",
         "text": {
             "type": "mrkdwn",
-            "text": ":shrug: Vet ikke ..."
+            "text": ":shrug: Annet / Vet ikke"
         },
         "accessory": {
             "type": "button",
