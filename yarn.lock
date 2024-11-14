@@ -256,6 +256,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@navikt/next-logger@npm:^1.35.0":
+  version: 1.35.0
+  resolution: "@navikt/next-logger@npm:1.35.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fnext-logger%2F1.35.0%2Fd8db3f9b5719486d8b7a61e29f4c18dd1f2a5033"
+  peerDependencies:
+    next: 14 || 15
+    pino: 8 || 9
+  checksum: 10c0/1044a56a866f79c8ec6d56da03ca2048ae8232016c5bf10d57b7b56c829a6092c396cd95bd264153cd3ed0a2671d68359487433d308f81b74685ca7a920dd5ce
+  languageName: node
+  linkType: hard
+
 "@next/env@npm:15.0.2":
   version: 15.0.2
   resolution: "@next/env@npm:15.0.2"
@@ -812,6 +822,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "aap-teamslackbot-next@workspace:."
   dependencies:
+    "@navikt/next-logger": "npm:^1.35.0"
     "@slack/bolt": "npm:3.21.4"
     "@types/node": "npm:^20"
     "@types/react": "npm:^18"

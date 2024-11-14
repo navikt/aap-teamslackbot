@@ -4,7 +4,7 @@ import { setupShowAndTellJob } from "@/src/bot/show-and-tell-post/show-and-tell-
 import { setupWorkspaceActionListeners } from "@/src/bot/work-from-where-poll/select-workplace-action";
 import { setupEventListener } from "@/src/bot/events";
 
-export function startBot() {
+export async function startBot() {
   const PORT = process.env.PORT ? Number(process.env.PORT) : 3000;
 
   const app = new App({
