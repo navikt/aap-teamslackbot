@@ -89,7 +89,7 @@ const blocks = [
     }
 ]
 
-const initWorkplaceBlocks = (title) => {
+export function initWorkplaceBlocks(title: string) {
     const heading = {
         "type": "section",
         "text": {
@@ -101,4 +101,3 @@ const initWorkplaceBlocks = (title) => {
     return [heading, ...blocks]
 }
 
-module.exports = initWorkplaceBlocks

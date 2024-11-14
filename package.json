@@ -1,18 +1,28 @@
 {
-  "name": "aap-teamslackbot",
-  "version": "0.0.1",
-  "main": "app.js",
+  "name": "aap-teamslackbot-next",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "start": "node src/app.js"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "@slack/bolt": "3.21.4",
-    "cron": "^3.1.4"
+    "cron": "^3.1.4",
+    "next": "15.0.2",
+    "react": "19.0.0-rc-02c0e824-20241028",
+    "react-dom": "19.0.0-rc-02c0e824-20241028",
+    "zod": "^3.23.8"
   },
-  "engines": {
-    "node": "20.x"
-  },
-  "repository": {
-    "url": "https://github.com/navikt/aap-teamslackbot"
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "15.0.2",
+    "prettier": "^3.3.3",
+    "typescript": "^5"
   }
 }
