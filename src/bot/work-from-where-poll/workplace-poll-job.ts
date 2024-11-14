@@ -39,7 +39,7 @@ export function setupWorkplacePollJob(app: App) {
   };
 
   // const time = '0 */5 10 * * 1-5' // Test cron
-  const time = "45 20 * * 1-5"; // kl 11:11:11, man-fre, alle uker, alle måneder
+  const time = "59 20 * * 1-5"; // kl 11:11:11, man-fre, alle uker, alle måneder
 
   console.log(`Init cronjob with crontime: ${time}`);
 
