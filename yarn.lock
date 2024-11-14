@@ -818,9 +818,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"aap-teamslackbot-next@workspace:.":
+"aap-teamslackbot@workspace:.":
   version: 0.0.0-use.local
-  resolution: "aap-teamslackbot-next@workspace:."
+  resolution: "aap-teamslackbot@workspace:."
   dependencies:
     "@navikt/next-logger": "npm:^1.35.0"
     "@slack/bolt": "npm:3.21.4"
