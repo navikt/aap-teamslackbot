@@ -17,8 +17,8 @@ export function setupShowAndTellJob(app: App) {
 
     try {
       const result = await app.client.chat.postMessage({
-        channel: 'aap-teamslackbot-test', // Test channel
-        // channel: "po-aap-team-aap",
+        // channel: 'aap-teamslackbot-test', // Test channel
+        channel: "po-aap-team-aap",
         blocks: showAndTellBlocks(datoString),
         text: "Should display blocks containing buttons to select workplace",
       });
@@ -33,7 +33,7 @@ export function setupShowAndTellJob(app: App) {
     }
   };
 
-  const time = "52 9 * * 5";
+  const time = "01 10 * * 5";
 
   console.log(`Init cronjob showandtell with crontime: ${time}`);
 
