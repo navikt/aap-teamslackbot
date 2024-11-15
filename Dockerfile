@@ -4,6 +4,7 @@ FROM gcr.io/distroless/nodejs22-debian12@sha256:0b5c394b935b1bf9b5e2ea24e14e6682
 WORKDIR /app
 COPY .next/standalone ./
 COPY .next/static ./.next/static
+COPY public ./public
 
 ENV NODE_ENV=production
 
