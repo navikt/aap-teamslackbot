@@ -7,16 +7,16 @@ export function showAndTellBlocks(datoString: string) {
             "text": `:circus_tent: Show & Tell ${datoString} \n Hva har du gjort denne uken som du kan vise eller snakke om i dag?`
         }
     },
-    // {
-    //     "type": "image",
-    //     "title": {
-    //         "type": "plain_text",
-    //         "text": "image1",
-    //         "emoji": true
-    //     },
-    //     "image_url": "https://api.slack.com/img/blocks/bkb_template_images/onboardingComplex.jpg",
-    //     "alt_text": "image1"
-    // },
+    {
+        "type": "image",
+        "title": {
+            "type": "plain_text",
+            "text": "image1",
+            "emoji": true
+        },
+        "image_url": "https://aap-teamslackbot.ekstern.dev.nav.no/showandtell.png",
+        "alt_text": "image1"
+    },
     {
         "type": "section",
         "text": {

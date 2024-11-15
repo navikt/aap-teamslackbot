@@ -33,8 +33,7 @@ export function setupShowAndTellJob(app: App) {
     }
   };
 
-  // const time = '0 */5 10 * * 1-5' // Test cron
-  const time = "25 21 * * 5"; // kl 11:11:11, man-fre, alle uker, alle måneder
+  const time = "52 9 * * 5";
 
   console.log(`Init cronjob showandtell with crontime: ${time}`);
 
