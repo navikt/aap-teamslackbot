@@ -1,8 +1,11 @@
 import { showAndTellBlocks } from "@/lib/bot/show-and-tell-post/show-and-tell-blocks";
 import { CronJob } from "cron";
 import { App } from "@slack/bolt";
+import {differenceInDays, parse} from "date-fns";
+import {isByWeeklyDate} from "@/lib/utils/date";
 
 const TIMEZONE = "Europe/Oslo";
+const startDateBiWeekly = parse('15/11/2024', 'dd/MM/yyyy', new Date())
 
 const now = () => {
   return new Date().toLocaleTimeString("no-NO", { timeZone: TIMEZONE });
@@ -11,6 +14,11 @@ const now = () => {
 export function setupShowAndTellJob(app: App) {
   const onTick = async () => {
     console.log(`Running job @ ${now()}`);
+    const isByWeekly = isByWeeklyDate(startDateBiWeekly, new Date());
+    if(!isByWeekly) {
+      console.log(`Hopper over denne fredagen, bare annen hver`)
+      return;
+    }
 
     const dayNumber = new Date().getDay();
     const datoString = `${ukedagNavn(dayNumber)} ${idagDateString()}?`;
@@ -33,7 +41,7 @@ export function setupShowAndTellJob(app: App) {
     }
   };
 
-  const time = "01 10 * * 5";
+  const time = "01 09 * * 5";
 
   console.log(`Init cronjob showandtell with crontime: ${time}`);
 
