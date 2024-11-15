@@ -1,8 +1,8 @@
 import { App } from "@slack/bolt";
-import { setupWorkplacePollJob } from "@/src/bot/work-from-where-poll/workplace-poll-job";
-import { setupShowAndTellJob } from "@/src/bot/show-and-tell-post/show-and-tell-job";
-import { setupWorkspaceActionListeners } from "@/src/bot/work-from-where-poll/select-workplace-action";
-import { setupEventListener } from "@/src/bot/events";
+import { setupWorkplacePollJob } from "@/lib/bot/work-from-where-poll/workplace-poll-job";
+import { setupShowAndTellJob } from "@/lib/bot/show-and-tell-post/show-and-tell-job";
+import { setupWorkspaceActionListeners } from "@/lib/bot/work-from-where-poll/select-workplace-action";
+import { setupEventListener } from "@/lib/bot/events";
 
 export async function startBot() {
   const PORT = process.env.PORT ? Number(process.env.PORT) : 3000;

@@ -1,4 +1,4 @@
-import { showAndTellBlocks } from "@/src/bot/show-and-tell-post/show-and-tell-blocks";
+import { showAndTellBlocks } from "@/lib/bot/show-and-tell-post/show-and-tell-blocks";
 import { CronJob } from "cron";
 import { App } from "@slack/bolt";
 

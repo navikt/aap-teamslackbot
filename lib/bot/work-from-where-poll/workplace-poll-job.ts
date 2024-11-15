@@ -1,4 +1,4 @@
-import { initWorkplaceBlocks } from "@/src/bot/work-from-where-poll/workplace-blocks";
+import { initWorkplaceBlocks } from "@/lib/bot/work-from-where-poll/workplace-blocks";
 import { App } from "@slack/bolt";
 import { CronJob } from "cron";
 

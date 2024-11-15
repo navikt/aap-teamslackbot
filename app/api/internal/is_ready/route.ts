@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server'
 import { logger } from '@navikt/next-logger'
 
-import { startBot } from '@/src/bot'
-import {getServerEnv} from "@/src/utils/env";
+import { startBot } from '@/lib/bot'
+import {getServerEnv} from "@/lib/utils/env";
 
 export const dynamic = 'force-dynamic'
 
