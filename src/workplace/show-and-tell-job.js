@@ -1,7 +1,10 @@
 const CronJob = require('cron').CronJob
 const showAndTellBlocks = require("./show-and-tell-blocks");
+const {isByWeeklyDate} = require("../utils/date");
+const {parse} = require("date-fns");
 
 const TIMEZONE = 'Europe/Oslo'
+const startDateBiWeekly = parse('15/11/2024', 'dd/MM/yyyy', new Date())
 
 const now = () => {
     return new Date()
@@ -11,6 +14,12 @@ const now = () => {
 const setupShowAndTellJob = (app) => {
     const onTick = async () => {
         console.log(`Running job @ ${now()}`)
+
+        const isByWeekly = isByWeeklyDate(startDateBiWeekly, new Date());
+        if(!isByWeekly) {
+            console.log(`Hopper over denne fredagen, bare annen hver`)
+            return;
+        }
 
         const dayNumber = new Date().getDay();
         const datoString = `${ukedagNavn(dayNumber)} ${idagDateString()}?`
