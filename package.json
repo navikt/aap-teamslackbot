@@ -1,38 +1,18 @@
 {
   "name": "aap-teamslackbot",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.0.1",
+  "main": "app.js",
   "scripts": {
-    "dev": "next dev",
-    "test": "echo good tests",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "node src/app.js"
   },
   "dependencies": {
-    "@navikt/next-logger": "^1.35.0",
-    "@slack/bolt": "^3.22.0",
-    "@slack/logger": "^4.0.0",
-    "@slack/types": "^2.14.0",
-    "cron": "^3.1.4",
-    "date-fns": "^4.1.0",
-    "next": "15.0.2",
-    "nextleton": "^0.6.1",
-    "node-cron": "^3.0.3",
-    "pino": "^9.5.0",
-    "react": "19.0.0-rc-02c0e824-20241028",
-    "react-dom": "19.0.0-rc-02c0e824-20241028",
-    "zod": "^3.23.8"
+    "@slack/bolt": "3.21.4",
+    "cron": "^3.1.4"
   },
-  "devDependencies": {
-    "@types/node": "^20",
-    "@types/node-cron": "^3",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "eslint": "^8",
-    "eslint-config-next": "15.0.2",
-    "prettier": "^3.3.3",
-    "typescript": "^5"
+  "engines": {
+    "node": "20.x"
   },
-  "packageManager": "yarn@4.5.1"
+  "repository": {
+    "url": "https://github.com/navikt/aap-teamslackbot"
+  }
 }
