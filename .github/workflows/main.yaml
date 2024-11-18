@@ -19,6 +19,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: Upload public folder to NAV CDN
+        uses: nais/deploy/actions/cdn-upload/v2@master
+        with:
+          team: aap
+          source: ./public
+          destination: /aap-teamslackbot/public
+          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
+          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
       - name: Build and publish docker image
         uses: nais/docker-build-push@v0
         id: docker-build-push
