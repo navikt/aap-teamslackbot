@@ -35,6 +35,7 @@ spec:
         - host: slack.com
         - host: api.slack.com
         - host: wss-primary.slack.com
+        - host: "cdn.nav.no"
   env:
     - name: PORT
       value: "8080"
