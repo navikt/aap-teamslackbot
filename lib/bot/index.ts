@@ -1,40 +1,22 @@
-import { App } from "@slack/bolt";
+import createApp from './app'
 import { setupWorkplacePollJob } from "@/lib/bot/work-from-where-poll/workplace-poll-job";
 import { setupShowAndTellJob } from "@/lib/bot/show-and-tell-post/show-and-tell-job";
 import { setupWorkspaceActionListeners } from "@/lib/bot/work-from-where-poll/select-workplace-action";
 import { setupEventListener } from "@/lib/bot/events";
+import {botLogger} from "@/lib/bot/bot-logger";
 
+const handlers = [
+  setupWorkplacePollJob,
+  setupShowAndTellJob,
+  setupEventListener,
+  setupWorkspaceActionListeners,
+]
 export async function startBot() {
-  const PORT = process.env.PORT ? Number(process.env.PORT) : 3000;
+  botLogger.info("setting up bot");
 
-  const app = new App({
-    socketMode: true,
-    token: process.env.SLACK_BOT_TOKEN,
-    signingSecret: process.env.SLACK_SIGNING_SECRET,
-    appToken: process.env.SLACK_APP_TOKEN,
-    port: PORT,
-    customRoutes: [
-      {
-        path: "/internal/is_alive",
-        method: ["GET"],
-        handler: (req, res) => {
-          res.writeHead(200);
-          res.end("OK");
-        },
-      },
-    ],
-  });
+  const app = createApp()
+  handlers.forEach((handler) => handler(app))
+  await app.start()
 
-  (async () => {
-    await app.start(PORT);
-
-    setupWorkplacePollJob(app);
-    setupShowAndTellJob(app);
-
-    console.log(`⚡️ Bolt app is running on port ${PORT}!`);
-  })();
-
-  setupEventListener(app);
-
-  setupWorkspaceActionListeners(app);
+  botLogger.info(`Started bolt app in socket mode`)
 }

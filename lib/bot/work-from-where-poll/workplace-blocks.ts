@@ -1,3 +1,4 @@
+export const selectWorkspaceId ="button_select_workplace";
 const blocks = [
     {
         "type": "divider"
@@ -16,7 +17,7 @@ const blocks = [
                 "emoji": true
             },
             "value": "home",
-            "action_id": "button_select_workplace"
+            "action_id": selectWorkspaceId
         }
     },
     {
@@ -33,7 +34,7 @@ const blocks = [
                 "emoji": true
             },
             "value": "office",
-            "action_id": "button_select_workplace"
+            "action_id": selectWorkspaceId
         }
     },
     {
@@ -50,7 +51,7 @@ const blocks = [
                 "emoji": true
             },
             "value": "vacation",
-            "action_id": "button_select_workplace"
+            "action_id": selectWorkspaceId
         }
     },
     {
@@ -67,7 +68,7 @@ const blocks = [
                 "emoji": true
             },
             "value": "sick",
-            "action_id": "button_select_workplace"
+            "action_id": selectWorkspaceId
         }
     },
     {
@@ -84,9 +85,9 @@ const blocks = [
                 "emoji": true
             },
             "value": "dontknow",
-            "action_id": "button_select_workplace"
+            "action_id": selectWorkspaceId
         }
-    }
+    },
 ]
 
 export function initWorkplaceBlocks(title: string) {

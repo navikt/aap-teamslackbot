@@ -386,25 +386,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@slack/bolt@npm:3.21.4":
-  version: 3.21.4
-  resolution: "@slack/bolt@npm:3.21.4"
+"@slack/bolt@npm:^3.22.0":
+  version: 3.22.0
+  resolution: "@slack/bolt@npm:3.22.0"
   dependencies:
     "@slack/logger": "npm:^4.0.0"
     "@slack/oauth": "npm:^2.6.3"
     "@slack/socket-mode": "npm:^1.3.6"
     "@slack/types": "npm:^2.13.0"
-    "@slack/web-api": "npm:^6.12.1"
+    "@slack/web-api": "npm:^6.13.0"
     "@types/express": "npm:^4.16.1"
     "@types/promise.allsettled": "npm:^1.0.3"
     "@types/tsscmp": "npm:^1.0.0"
     axios: "npm:^1.7.4"
-    express: "npm:^4.16.4"
+    express: "npm:^4.21.0"
     path-to-regexp: "npm:^8.1.0"
     promise.allsettled: "npm:^1.0.2"
     raw-body: "npm:^2.3.3"
     tsscmp: "npm:^1.0.6"
-  checksum: 10c0/201ac5fefba53f372657cfbecef89563c66dd8cf6ef3033c7d10ad048fbf4ab14f4a0d59ede8f2e7bb4899c04a22f960dcd65e5ce8a11a3b7cffd92c2cc73331
+  checksum: 10c0/115923b624800798da01fa639dbc2d7ebfd2201e1722dfe651e905cde21dae8b2195cccc39093f0ecfe86e84e9a6c3726db83f810db31a4a9433530939fe7969
   languageName: node
   linkType: hard
 
@@ -455,14 +455,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@slack/types@npm:^2.11.0, @slack/types@npm:^2.13.0":
+"@slack/types@npm:^2.11.0, @slack/types@npm:^2.13.0, @slack/types@npm:^2.14.0":
   version: 2.14.0
   resolution: "@slack/types@npm:2.14.0"
   checksum: 10c0/2d45b36ee128e202b8b864fa35f5752c9f811a433d598461de83c47bf5fc5c1f45678825b4185007d8151ebb8b0ce00e6541780f4f3af5698855aebfc6550fb8
   languageName: node
   linkType: hard
 
-"@slack/web-api@npm:^6.12.1":
+"@slack/web-api@npm:^6.12.1, @slack/web-api@npm:^6.13.0":
   version: 6.13.0
   resolution: "@slack/web-api@npm:6.13.0"
   dependencies:
@@ -583,6 +583,13 @@ __metadata:
   version: 1.3.5
   resolution: "@types/mime@npm:1.3.5"
   checksum: 10c0/c2ee31cd9b993804df33a694d5aa3fa536511a49f2e06eeab0b484fef59b4483777dbb9e42a4198a0809ffbf698081fdbca1e5c2218b82b91603dfab10a10fbc
+  languageName: node
+  linkType: hard
+
+"@types/node-cron@npm:^3":
+  version: 3.0.11
+  resolution: "@types/node-cron@npm:3.0.11"
+  checksum: 10c0/21cd0255988da2935bc8bf010da8b31624911ec10ef5d9a96a59c57193f60b27c1749b2e27c2a292a697d00195da5b8848a707345bb276abc39c96287ee82005
   languageName: node
   linkType: hard
 
@@ -823,8 +830,11 @@ __metadata:
   resolution: "aap-teamslackbot@workspace:."
   dependencies:
     "@navikt/next-logger": "npm:^1.35.0"
-    "@slack/bolt": "npm:3.21.4"
+    "@slack/bolt": "npm:^3.22.0"
+    "@slack/logger": "npm:^4.0.0"
+    "@slack/types": "npm:^2.14.0"
     "@types/node": "npm:^20"
+    "@types/node-cron": "npm:^3"
     "@types/react": "npm:^18"
     "@types/react-dom": "npm:^18"
     cron: "npm:^3.1.4"
@@ -832,6 +842,8 @@ __metadata:
     eslint: "npm:^8"
     eslint-config-next: "npm:15.0.2"
     next: "npm:15.0.2"
+    nextleton: "npm:^0.6.1"
+    node-cron: "npm:^3.0.3"
     pino: "npm:^9.5.0"
     prettier: "npm:^3.3.3"
     react: "npm:19.0.0-rc-02c0e824-20241028"
@@ -1992,7 +2004,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"express@npm:^4.16.4":
+"express@npm:^4.21.0":
   version: 4.21.1
   resolution: "express@npm:4.21.1"
   dependencies:
@@ -3205,6 +3217,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nextleton@npm:^0.6.1":
+  version: 0.6.1
+  resolution: "nextleton@npm:0.6.1"
+  checksum: 10c0/e022de7692575220eb349b8497b6975b19d80d088a14eb7d41013f9b389de5333bee7e6efd3f42bc8936c282d027165dd301cc4f5747070ac25bd2585aefa075
+  languageName: node
+  linkType: hard
+
+"node-cron@npm:^3.0.3":
+  version: 3.0.3
+  resolution: "node-cron@npm:3.0.3"
+  dependencies:
+    uuid: "npm:8.3.2"
+  checksum: 10c0/e6e817c5bf28cca69f256ecc1a2cb737cf895cb0fe22f8ec58ce614cb74dcc22e93f495984a26ece51322473238ccc0ef53b4f373035697017b8c28bddacb9b9
+  languageName: node
+  linkType: hard
+
 "object-assign@npm:^4.1.1":
   version: 4.1.1
   resolution: "object-assign@npm:4.1.1"
@@ -4404,6 +4432,15 @@ __metadata:
   version: 1.0.1
   resolution: "utils-merge@npm:1.0.1"
   checksum: 10c0/02ba649de1b7ca8854bfe20a82f1dfbdda3fb57a22ab4a8972a63a34553cf7aa51bc9081cf7e001b035b88186d23689d69e71b510e610a09a4c66f68aa95b672
+  languageName: node
+  linkType: hard
+
+"uuid@npm:8.3.2":
+  version: 8.3.2
+  resolution: "uuid@npm:8.3.2"
+  bin:
+    uuid: dist/bin/uuid
+  checksum: 10c0/bcbb807a917d374a49f475fae2e87fdca7da5e5530820ef53f65ba1d12131bd81a92ecf259cc7ce317cbe0f289e7d79fdfebcef9bfa3087c8c8a2fa304c9be54
   languageName: node
   linkType: hard
 
