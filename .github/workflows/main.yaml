@@ -24,7 +24,7 @@ jobs:
         with:
           team: aap
           source: ./public
-          destination: /aap-teamslackbot/public
+          destination: /aap-teamslackbot/
           identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
           project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
       - name: Build and publish docker image
