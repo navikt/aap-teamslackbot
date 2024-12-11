@@ -86,6 +86,23 @@ const blocks = [
             "value": "dontknow",
             "action_id": "button_select_workplace"
         }
+    },
+    {
+        "type": "section",
+        "text": {
+            "type": "mrkdwn",
+            "text": ":baby: Barnefødsel"
+        },
+        "accessory": {
+            "type": "button",
+            "text": {
+                "type": "plain_text",
+                "text": ":baby:",
+                "emoji": true
+            },
+            "value": "dontknow",
+            "action_id": "button_select_workplace"
+        }
     }
 ]
 
