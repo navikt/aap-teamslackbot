@@ -1,10 +1,11 @@
 const CronJob = require('cron').CronJob
 const showAndTellBlocks = require("./show-and-tell-blocks");
 const isByWeeklyDate = require("../utils/date");
+const isTodayAHoliday = require("../utils/holidays");
 const {parse} = require("date-fns");
 
 const TIMEZONE = 'Europe/Oslo'
-const startDateBiWeekly = parse('15/11/2024', 'dd/MM/yyyy', new Date())
+const startDateBiWeekly = parse('20/12/2024', 'dd/MM/yyyy', new Date())
 
 const now = () => {
     return new Date()
@@ -14,6 +15,11 @@ const now = () => {
 const setupShowAndTellJob = (app) => {
     const onTick = async () => {
         console.log(`Running job @ ${now()}`)
+
+        if(isTodayAHoliday()){
+            console.log('God ferie')
+            return
+        }
 
         const isByWeekly = isByWeeklyDate(startDateBiWeekly, new Date());
         if(!isByWeekly) {

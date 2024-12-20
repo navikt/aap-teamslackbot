@@ -1,5 +1,6 @@
 const CronJob = require('cron').CronJob
 const initWorkplaceBlocks = require("./workplace-blocks")
+const isTodayAHoliday = require("../utils/holidays");
 
 const TIMEZONE = 'Europe/Oslo'
 
@@ -11,6 +12,11 @@ const now = () => {
 const setupJob = (app) => {
     const onTick = async () => {
         console.log(`Running job @ ${now()}`)
+
+        if(isTodayAHoliday()){
+            console.log('God ferie')
+            return
+        }
 
         let title;
         const dayNumber = new Date().getDay();
