@@ -22,9 +22,9 @@ const setupVaktJob = (app) => {
 
         try {
             const result = await app.client.chat.postMessage({
-                channel: 'aap-teamslackbot-test', // Test channel
-                // channel: 'po-aap-team-aap',
-                // channel: 'teamslackbot',
+                // channel: 'aap-teamslackbot-test', // Test channel
+                channel: 'po-aap-team-aap-privat',
+                unfurl_links: false,
                 blocks: vaktBlocks(dagensVakt),
                 text: 'Should display blocks containing dagens tekniske vakt'
             })
@@ -40,7 +40,7 @@ const setupVaktJob = (app) => {
     };
 
     // const time = '0 */5 10 * * 1-5' // Test cron
-    const time = '20 16 * * 1-5' // kl 11:11:11, man-fre, alle uker, alle måneder
+    const time = '0 8 * * 1-5' // kl 11:11:11, man-fre, alle uker, alle måneder
 
     console.log(`Init cronjob vaktrotasjon with crontime: ${time}`)
 
