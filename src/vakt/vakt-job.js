@@ -1,5 +1,5 @@
 const isTodayAHoliday = require("../utils/holidays");
-// const hentDagensVakt = require("./vaktliste");
+const hentDagensVakt = require("./vaktliste");
 const vaktBlocks = require("./vakt-blocks");
 const CronJob = require('cron').CronJob
 const TIMEZONE = 'Europe/Oslo'
@@ -13,14 +13,14 @@ const setupVaktJob = (app) => {
             return
         }
 
-        // const dagensVakt = hentDagensVakt();
+        const dagensVakt = hentDagensVakt();
 
         try {
             const result = await app.client.chat.postMessage({
                 channel: 'aap-teamslackbot-test', // Test channel
                 // channel: 'po-aap-team-aap',
                 // channel: 'teamslackbot',
-                blocks: vaktBlocks('testperson'),
+                blocks: vaktBlocks(dagensVakt),
                 text: 'Should display blocks containing dagens tekniske vakt'
             })
 
