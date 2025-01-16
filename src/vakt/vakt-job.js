@@ -4,6 +4,11 @@ const vaktBlocks = require("./vakt-blocks");
 const CronJob = require('cron').CronJob
 const TIMEZONE = 'Europe/Oslo'
 
+const now = () => {
+    return new Date()
+        .toLocaleTimeString('no-NO', { timeZone: TIMEZONE })
+}
+
 const setupVaktJob = (app) => {
     const onTick = async () => {
         console.log(`Running vakt-job @ ${now()}`)
@@ -35,7 +40,7 @@ const setupVaktJob = (app) => {
     };
 
     // const time = '0 */5 10 * * 1-5' // Test cron
-    const time = '30 15 * * 1-5' // kl 11:11:11, man-fre, alle uker, alle måneder
+    const time = '10 16 * * 1-5' // kl 11:11:11, man-fre, alle uker, alle måneder
 
     console.log(`Init cronjob vaktrotasjon with crontime: ${time}`)
 
