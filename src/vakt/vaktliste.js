@@ -20,7 +20,7 @@ const hentDagensVakt = () => {
     var daysSinceEpoc = Math.floor(Date.now() / 24 / 60 / 60 / 1000)
     var numberOfSaturdaysSinceEpoc = Math.floor((daysSinceEpoc + 4) / 7)
     var numberOfSundaysSinceEpoc = Math.floor((daysSinceEpoc + 5) / 7) ;
-    var daysSinceEpocWithoutWeekends = daySinceEpoc - numberOfSaturdaysSinceEpoc - numberOfSundaysSinceEpoc;
+    var daysSinceEpocWithoutWeekends = daysSinceEpoc - numberOfSaturdaysSinceEpoc - numberOfSundaysSinceEpoc;
     var vaktIndex = daysSinceEpocWithoutWeekends % utviklere.length
 
     console.log(`days since epoc without weekends: ${daysSinceEpocWithoutWeekends}, vaktIndex: ${vaktIndex}`);
