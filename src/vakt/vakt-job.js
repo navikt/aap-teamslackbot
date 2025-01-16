@@ -1,8 +1,8 @@
 const isTodayAHoliday = require("../utils/holidays");
 const hentDagensVakt = require("./vaktliste");
 const vaktBlocks = require("./vakt-blocks");
-const showAndTellBlocks = require("../workplace/show-and-tell-blocks");
 const CronJob = require('cron').CronJob
+const TIMEZONE = 'Europe/Oslo'
 
 const setupVaktJob = (app) => {
     const onTick = async () => {
@@ -35,7 +35,7 @@ const setupVaktJob = (app) => {
     };
 
     // const time = '0 */5 10 * * 1-5' // Test cron
-    const time = '35 12 * * 5' // kl 11:11:11, man-fre, alle uker, alle måneder
+    const time = '42 12 * * 5' // kl 11:11:11, man-fre, alle uker, alle måneder
 
     console.log(`Init cronjob showandtell with crontime: ${time}`)
 
