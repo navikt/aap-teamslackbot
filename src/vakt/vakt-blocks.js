@@ -1,5 +1,5 @@
 const vaktBlocks = (dagensVakt) => {
-    const vaktTekst = `:guardsman: *Dagens tekniske vakt er <${dagensVakt}>*`;
+    const vaktTekst = `:guardsman: *Dagens tekniske vakt er <@${dagensVakt}>*`;
     return [
         {
             "type": "section",
