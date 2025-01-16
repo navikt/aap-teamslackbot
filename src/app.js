@@ -3,6 +3,7 @@ const setupWorkplaceJob = require('./workplace/workplace-poll-job')
 const setupWorkplaceAction = require("./workplace/select-workplace-action");
 const setupEventListener = require("./events");
 const setupShowAndTellJob = require("./workplace/show-and-tell-job");
+const setupVaktJob = require('./vakt/vakt-job');
 
 
 const PORT = process.env.PORT || 3000
@@ -28,12 +29,13 @@ const app = new App({
 (async () => {
     await app.start(PORT);
 
-    setupWorkplaceJob(app)
-    setupShowAndTellJob(app)
+    setupWorkplaceJob(app);
+    setupShowAndTellJob(app);
+    setupVaktJob(app);
 
     console.log(`⚡️ Bolt app is running on port ${PORT}!`);
 })();
 
-setupEventListener(app)
+setupEventListener(app);
 
-setupWorkplaceAction(app)
+setupWorkplaceAction(app);
