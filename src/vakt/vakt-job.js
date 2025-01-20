@@ -40,7 +40,7 @@ const setupVaktJob = (app) => {
     };
 
     // const time = '0 */5 10 * * 1-5' // Test cron
-    const time = '10 9 * * 1-5' // kl 11:11:11, man-fre, alle uker, alle måneder
+    const time = '58 07 * * 1-5' // kl 11:11:11, man-fre, alle uker, alle måneder
 
     console.log(`Init cronjob vaktrotasjon with crontime: ${time}`)
 
