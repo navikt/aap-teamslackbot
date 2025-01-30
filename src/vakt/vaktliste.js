@@ -14,7 +14,6 @@ const utviklere = [
    'U0184NNTXL5' ,      // Peter
     'U03HT22GCBU',      // Thomas
     'U02EFCUUQF8',      // Tor
-   'U07JHFVRPTM',       // Bin
 ]
 const hentDagensVakt = () => {
     var daysSinceEpoc = Math.floor(Date.now() / 24 / 60 / 60 / 1000)
