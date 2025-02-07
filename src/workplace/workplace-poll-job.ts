@@ -1,6 +1,7 @@
+import {isTodayAHoliday} from "src/utils/holidays";
+
 const CronJob = require('cron').CronJob
 const initWorkplaceBlocks = require("./workplace-blocks")
-const isTodayAHoliday = require("../utils/holidays");
 
 const TIMEZONE = 'Europe/Oslo'
 

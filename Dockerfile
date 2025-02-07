@@ -1,22 +1,9 @@
-FROM node:20-bookworm-slim as base
+FROM gcr.io/distroless/nodejs22-debian12:latest@sha256:e36aabe0394465699ebdb68544f6f3b618a654af85f6fa1b55e8fc4e567b3250
 
-WORKDIR /usr/src/app
+ENV NODE_ENV production
 
-COPY src ./src
-COPY package.json ./package.json
-COPY yarn.lock ./yarn.lock
+COPY dist ./dist
+COPY node_modules ./node_modules
+COPY package.json .
 
-ENV NODE_ENV="production"
-RUN yarn
-
-
-FROM gcr.io/distroless/nodejs20-debian12 as prod
-COPY --from=base /usr/src/app /app
-
-USER nonroot
-ENV NODE_ENV="production"
-
-WORKDIR /app
-EXPOSE 8080
-
-CMD ["./src/app.js"]
+CMD ["dist/src/index.js"]

@@ -1,7 +1,7 @@
 const {App} = require("@slack/bolt");
 const setupWorkplaceJob = require('./workplace/workplace-poll-job')
 const setupWorkplaceAction = require("./workplace/select-workplace-action");
-const setupEventListener = require("./events");
+const setupEventListener = require("src/events");
 const setupShowAndTellJob = require("./workplace/show-and-tell-job");
 const setupVaktJob = require('./vakt/vakt-job');
 

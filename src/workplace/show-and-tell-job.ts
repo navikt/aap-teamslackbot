@@ -1,6 +1,7 @@
+import {isByWeeklyDate} from "src/utils/date";
+
 const CronJob = require('cron').CronJob
 const showAndTellBlocks = require("./show-and-tell-blocks");
-const isByWeeklyDate = require("../utils/date");
 const isTodayAHoliday = require("../utils/holidays");
 const {parse} = require("date-fns");
 

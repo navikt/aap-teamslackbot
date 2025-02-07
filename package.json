@@ -1,9 +1,9 @@
 {
   "name": "aap-teamslackbot",
   "version": "0.0.1",
-  "main": "app.js",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "node src/app.js"
+    "start": "node src/index.ts"
   },
   "dependencies": {
     "@slack/bolt": "3.22.0",
@@ -15,5 +15,9 @@
   },
   "repository": {
     "url": "https://github.com/navikt/aap-teamslackbot"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.1",
+    "typescript": "^5.7.3"
   }
 }

@@ -1,7 +1,7 @@
 const isTodayAHoliday = require("../utils/holidays");
 const hentDagensTekniskeVakt = require("./teknisk-vaktliste");
 const hentDagensTestoppfolgingsVakt = require('./testoppfolging-vaktliste');
-const vaktBlocks = require("./vakt-blocks");
+const vaktBlocks = require("src/vakt/vakt-blocks");
 const CronJob = require('cron').CronJob
 const TIMEZONE = 'Europe/Oslo'
 
