@@ -1,4 +1,4 @@
-const vaktBlocks = (dagensVakt) => {
+const tekniskVaktBlocks = (dagensVakt) => {
     const vaktTekst = `:guardsman: *Dagens tekniske vakt er <@${dagensVakt}>*`;
     return [
         {
@@ -23,4 +23,4 @@ const vaktBlocks = (dagensVakt) => {
     ]
 }
 
-module.exports = vaktBlocks;
+module.exports = tekniskVaktBlocks;

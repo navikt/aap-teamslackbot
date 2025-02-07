@@ -1,4 +1,3 @@
-const {getDayOfYear} = require("date-fns");
 const utviklere = [
     'UR5LG64LD',   // Grizzly
     'U03LBKLNNAF', // Vetle
@@ -15,7 +14,7 @@ const utviklere = [
     'U03HT22GCBU',      // Thomas
     'U02EFCUUQF8',      // Tor
 ]
-const hentDagensVakt = () => {
+const hentDagensTekniskeVakt = () => {
     var daysSinceEpoc = Math.floor(Date.now() / 24 / 60 / 60 / 1000)
     var numberOfSaturdaysSinceEpoc = Math.floor((daysSinceEpoc + 4) / 7)
     var numberOfSundaysSinceEpoc = Math.floor((daysSinceEpoc + 5) / 7) ;
@@ -26,4 +25,4 @@ const hentDagensVakt = () => {
     return utviklere[vaktIndex];
 }
 
-module.exports = hentDagensVakt;
+module.exports = hentDagensTekniskeVakt;
