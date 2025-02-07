@@ -17,6 +17,7 @@
     "url": "https://github.com/navikt/aap-teamslackbot"
   },
   "devDependencies": {
+    "@slack/types": "^2.14.0",
     "@types/node": "^22.13.1",
     "typescript": "^5.7.3"
   }

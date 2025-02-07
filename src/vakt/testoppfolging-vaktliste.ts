@@ -8,7 +8,7 @@ const utviklere = [
     'UDZ2TFBA4', // Jostein
     'UD59YS6TC', // Øyvind
 ]
-const hentDagensTestoppfolgingsVakt = () => {
+export function hentDagensTestoppfolgingsVakt() {
     var daysSinceEpoc = Math.floor(Date.now() / 24 / 60 / 60 / 1000)
     var numberOfSaturdaysSinceEpoc = Math.floor((daysSinceEpoc + 4) / 7)
     var numberOfSundaysSinceEpoc = Math.floor((daysSinceEpoc + 5) / 7) ;
@@ -19,4 +19,3 @@ const hentDagensTestoppfolgingsVakt = () => {
     return utviklere[vaktIndex];
 }
 
-module.exports = hentDagensTestoppfolgingsVakt;

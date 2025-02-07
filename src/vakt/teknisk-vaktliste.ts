@@ -14,7 +14,7 @@ const utviklere = [
     'U03HT22GCBU',      // Thomas
     'U02EFCUUQF8',      // Tor
 ]
-const hentDagensTekniskeVakt = () => {
+export function hentDagensTekniskeVakt() {
     var daysSinceEpoc = Math.floor(Date.now() / 24 / 60 / 60 / 1000)
     var numberOfSaturdaysSinceEpoc = Math.floor((daysSinceEpoc + 4) / 7)
     var numberOfSundaysSinceEpoc = Math.floor((daysSinceEpoc + 5) / 7) ;
@@ -25,4 +25,3 @@ const hentDagensTekniskeVakt = () => {
     return utviklere[vaktIndex];
 }
 
-module.exports = hentDagensTekniskeVakt;

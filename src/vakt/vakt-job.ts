@@ -1,7 +1,8 @@
+import {hentDagensTekniskeVakt} from "src/vakt/teknisk-vaktliste";
+import {hentDagensTestoppfolgingsVakt} from "src/vakt/testoppfolging-vaktliste";
+import {vaktBlocks} from "src/vakt/vakt-blocks";
+
 const isTodayAHoliday = require("../utils/holidays");
-const hentDagensTekniskeVakt = require("./teknisk-vaktliste");
-const hentDagensTestoppfolgingsVakt = require('./testoppfolging-vaktliste');
-const vaktBlocks = require("src/vakt/vakt-blocks");
 const CronJob = require('cron').CronJob
 const TIMEZONE = 'Europe/Oslo'
 
