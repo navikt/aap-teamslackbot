@@ -5,6 +5,9 @@ const vaktBlocks = (dagensTekniskeVakt, dagensTestVakt) => {
     const testVaktTekst = `:test_tube: *Dagens testvakt er <@${dagensTestVakt}>*`;
     return [
         {
+            "type": "divider"
+        },
+        {
             "type": "section",
             "text": {
             "type": "mrkdwn",
