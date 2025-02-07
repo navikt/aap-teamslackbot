@@ -1,7 +1,7 @@
 const isTodayAHoliday = require("../utils/holidays");
 const hentDagensTekniskeVakt = require("./teknisk-vaktliste");
-const tekniskVaktBlocks = require("./teknisk-vakt-blocks");
-const testoppfolgingVaktBlocks = require("./testoppfolging-vakt-blocks");
+const hentDagensTestoppfolgingsVakt = require('./testoppfolging-vaktliste');
+const vaktBlocks = require("./vakt-blocks");
 const CronJob = require('cron').CronJob
 const TIMEZONE = 'Europe/Oslo'
 
@@ -19,35 +19,16 @@ const setupVaktJob = (app) => {
             return
         }
 
-        const dagensVakt = hentDagensTekniskeVakt();
 
-        // TEKNISK VAKT
+        const dagensTekniskeVakt = hentDagensTekniskeVakt();
+        const dagensTestVakt = hentDagensTestoppfolgingsVakt();
         try {
             const result = await app.client.chat.postMessage({
                 channel: 'aap-teamslackbot-test', // Test channel
                 // channel: 'po-aap-team-aap-privat',
                 unfurl_links: false,
-                blocks: tekniskVaktBlocks(dagensVakt),
+                blocks: vaktBlocks(dagensTekniskeVakt, dagensTestVakt),
                 text: 'Should display blocks containing dagens tekniske vakt'
-            })
-
-            if (result.ok) {
-                console.log('Message sent OK')
-            } else {
-                console.error(`Error on postMessage: ${result.error}`)
-            }
-        } catch (e) {
-            console.error(e)
-        }
-
-        //TESTOPPFØLGING VAKT
-        try {
-            const result = await app.client.chat.postMessage({
-                channel: 'aap-teamslackbot-test', // Test channel
-                // channel: 'po-aap-team-aap-privat',
-                unfurl_links: false,
-                blocks: testoppfolgingVaktBlocks(dagensVakt),
-                text: 'Should display blocks containing dagens testoppfølgingsvakt'
             })
 
             if (result.ok) {
@@ -61,7 +42,7 @@ const setupVaktJob = (app) => {
     };
 
     // const time = '58 07 * * 1-5' // kl 11:11:11, man-fre, alle uker, alle måneder
-    const time = '30 20 * * 1-5' // kl 11:11:11, man-fre, alle uker, alle måneder
+    const time = '05 21 * * 1-5' // kl 11:11:11, man-fre, alle uker, alle måneder
 
     console.log(`Init cronjob vaktrotasjon with crontime: ${time}`)
 
