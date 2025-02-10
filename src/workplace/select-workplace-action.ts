@@ -1,5 +1,6 @@
+import {Action, App, Block} from "@slack/bolt";
 
-const addOrRemoveUser = (block, userId) => {
+const addOrRemoveUser = (block: Block, userId: string) => {
     const origMsg = block.text.text
 
     const userCount = (origMsg.match(/@/g) || []).length
@@ -7,8 +8,8 @@ const addOrRemoveUser = (block, userId) => {
     if (userCount > 0) {
         // Create array of all users in original message
         // Users are formatted like this: <@userId>
-        let users = origMsg.substring(origMsg.indexOf("<")).split(",")
-            .map(user => user.trim())
+        let users: string[] = origMsg.substring(origMsg.indexOf("<")).split(",")
+            .map((user: string) => user.trim())
 
         if (origMsg.includes(userId)) {
             users = users.filter(user => !user.includes(userId))
@@ -31,7 +32,7 @@ const addOrRemoveUser = (block, userId) => {
     return block;
 }
 
-const updateBlocks = async (username, blocks, actions) => {
+const updateBlocks = async (username: string, blocks: Block[], actions: Action[]) => {
     const action = actions[0]
 
     return blocks.map((block) => {
@@ -43,18 +44,23 @@ const updateBlocks = async (username, blocks, actions) => {
     })
 }
 
-const setupActions = (app) => {
+const setupActions = (app: App) => {
     app.action('button_select_workplace', async ({ack, body, context}) => {
         await ack();
 
         try {
             console.log(`select_workplace_action triggered by user @${body.user.username}`)
+            const channelId = body.channel.id;
+            if(!channelId) {
+                console.log(`channelid not found`)
+                return
+            }
             const blocks = await updateBlocks(body.user.id, body.message.blocks, body.actions)
 
             const result = await app.client.chat.update({
                 token: context.botToken,
                 ts: body.message.ts,
-                channel: body.channel.id,
+                channel: channelId,
                 blocks,
                 text: "Some random message..."
             })

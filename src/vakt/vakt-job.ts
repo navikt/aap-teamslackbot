@@ -1,6 +1,7 @@
 import {hentDagensTekniskeVakt} from "src/vakt/teknisk-vaktliste";
 import {hentDagensTestoppfolgingsVakt} from "src/vakt/testoppfolging-vaktliste";
 import {vaktBlocks} from "src/vakt/vakt-blocks";
+import {App} from "@slack/bolt";
 
 const isTodayAHoliday = require("../utils/holidays");
 const CronJob = require('cron').CronJob
@@ -11,7 +12,7 @@ const now = () => {
         .toLocaleTimeString('no-NO', { timeZone: TIMEZONE })
 }
 
-const setupVaktJob = (app) => {
+const setupVaktJob = (app: App) => {
     const onTick = async () => {
         console.log(`Running vakt-job @ ${now()}`)
 

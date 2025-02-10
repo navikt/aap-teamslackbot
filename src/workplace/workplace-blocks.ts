@@ -89,7 +89,7 @@ const blocks = [
     }
 ]
 
-const initWorkplaceBlocks = (title) => {
+const initWorkplaceBlocks = (title: string) => {
     const heading = {
         "type": "section",
         "text": {

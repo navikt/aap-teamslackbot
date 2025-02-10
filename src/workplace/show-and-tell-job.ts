@@ -1,4 +1,5 @@
 import {isByWeeklyDate} from "src/utils/date";
+import {App} from "@slack/bolt";
 
 const CronJob = require('cron').CronJob
 const showAndTellBlocks = require("./show-and-tell-blocks");
@@ -13,7 +14,7 @@ const now = () => {
         .toLocaleTimeString('no-NO', { timeZone: TIMEZONE })
 }
 
-const setupShowAndTellJob = (app) => {
+const setupShowAndTellJob = (app: App) => {
     const onTick = async () => {
         console.log(`Running job @ ${now()}`)
 
@@ -59,7 +60,7 @@ const setupShowAndTellJob = (app) => {
 
     job.start()
 }
-function ukedagNavn(dayNumber) {
+function ukedagNavn(dayNumber: number) {
     const dayNames = ['Søndag', 'Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag']
     return dayNames[dayNumber];
 }

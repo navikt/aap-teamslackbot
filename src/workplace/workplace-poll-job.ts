@@ -1,4 +1,5 @@
 import {isTodayAHoliday} from "src/utils/holidays";
+import {App} from "@slack/bolt";
 
 const CronJob = require('cron').CronJob
 const initWorkplaceBlocks = require("./workplace-blocks")
@@ -10,7 +11,7 @@ const now = () => {
         .toLocaleTimeString('no-NO', { timeZone: TIMEZONE })
 }
 
-const setupJob = (app) => {
+const setupJob = (app: App) => {
     const onTick = async () => {
         console.log(`Running job @ ${now()}`)
 
@@ -55,7 +56,7 @@ const setupJob = (app) => {
 
     job.start()
 }
-function ukedagNavn(dayNumber) {
+function ukedagNavn(dayNumber: number) {
     const dayNames = ['Søndag', 'Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag']
     return dayNames[dayNumber];
 }
