@@ -41,7 +41,7 @@ const setupVaktJob = (app) => {
         }
     };
 
-    const time = '55 09 * * 1-5' // kl 11:11:11, man-fre, alle uker, alle måneder
+    const time = '58 07 * * 1-5' // kl 11:11:11, man-fre, alle uker, alle måneder
 
     console.log(`Init cronjob vaktrotasjon with crontime: ${time}`)
 
