@@ -12,7 +12,7 @@ const now = () => {
         .toLocaleTimeString('no-NO', { timeZone: TIMEZONE })
 }
 
-const setupVaktJob = (app: App) => {
+export function setupVaktJob(app: App) {
     const onTick = async () => {
         console.log(`Running vakt-job @ ${now()}`)
 
@@ -52,4 +52,3 @@ const setupVaktJob = (app: App) => {
     job.start()
 }
 
-module.exports = setupVaktJob;

@@ -14,7 +14,7 @@ const now = () => {
         .toLocaleTimeString('no-NO', { timeZone: TIMEZONE })
 }
 
-const setupShowAndTellJob = (app: App) => {
+export function setupShowAndTellJob(app: App) {
     const onTick = async () => {
         console.log(`Running job @ ${now()}`)
 
@@ -70,4 +70,3 @@ function idagDateString() {
     return `${today.getDate()}. ${monthNames[today.getMonth()]}`
 }
 
-module.exports = setupShowAndTellJob

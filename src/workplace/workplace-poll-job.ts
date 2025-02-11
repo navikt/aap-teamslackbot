@@ -11,7 +11,7 @@ const now = () => {
         .toLocaleTimeString('no-NO', { timeZone: TIMEZONE })
 }
 
-const setupJob = (app: App) => {
+export function setupWorkplaceJob(app: App) {
     const onTick = async () => {
         console.log(`Running job @ ${now()}`)
 
@@ -67,5 +67,3 @@ function imorgenDateString() {
     const monthNames = ['Januar', 'Februar','Mars', 'April','Mai', 'Juni','Juli', 'August','September','Oktober', 'November', 'Desember']
     return `${tomorrow.getDate()}. ${monthNames[tomorrow.getMonth()]}`
 }
-
-module.exports = setupJob

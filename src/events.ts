@@ -1,6 +1,6 @@
 import {App} from "@slack/bolt";
 
-const setupEventListener = (app: App) => {
+export function setupEventListener(app: App) {
     app.event('app_home_opened', async ({ event, client }) => {
         try {
             const result = await client.views.publish({
@@ -29,4 +29,3 @@ const setupEventListener = (app: App) => {
     })
 }
 
-module.exports = setupEventListener

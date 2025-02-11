@@ -52,7 +52,7 @@ const updateBlocks = async (username: string, blocks: WorkplaceBlock[], actions:
     })
 }
 
-const setupActions = (app: App) => {
+export function setupWorkplaceAction(app: App) {
     app.action('button_select_workplace', async ({action, ack, body, context}) => {
         await ack();
         if (action.type !== 'button' || body.type !== 'block_actions') {
@@ -96,5 +96,3 @@ const setupActions = (app: App) => {
         }
     });
 }
-
-module.exports = setupActions

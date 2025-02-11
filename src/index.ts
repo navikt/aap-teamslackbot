@@ -1,15 +1,15 @@
 import {ParamsIncomingMessage} from "@slack/bolt/dist/receivers/ParamsIncomingMessage";
 import {ServerResponse} from "http";
 
-const {App} = require("@slack/bolt");
-const setupWorkplaceJob = require('./workplace/workplace-poll-job')
-const setupWorkplaceAction = require("./workplace/select-workplace-action");
-const setupEventListener = require("src/events");
-const setupShowAndTellJob = require("./workplace/show-and-tell-job");
-const setupVaktJob = require('./vakt/vakt-job');
+import {App} from "@slack/bolt";
+import {setupVaktJob} from "src/vakt/vakt-job";
+import {setupShowAndTellJob} from "src/workplace/show-and-tell-job";
+import {setupEventListener} from "src/events";
+import {setupWorkplaceJob} from "src/workplace/workplace-poll-job";
+import {setupWorkplaceAction} from "src/workplace/select-workplace-action";
 
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT ? parseInt(process.env.PORT) : 3000
 
 const app = new App({
     socketMode: true,
