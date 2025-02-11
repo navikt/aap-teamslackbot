@@ -5,3 +5,4 @@
 .pnp.loader.mjs
 /node_modules
 .env.local
+dist
