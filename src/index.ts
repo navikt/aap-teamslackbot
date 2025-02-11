@@ -1,3 +1,6 @@
+import {ParamsIncomingMessage} from "@slack/bolt/dist/receivers/ParamsIncomingMessage";
+import {ServerResponse} from "http";
+
 const {App} = require("@slack/bolt");
 const setupWorkplaceJob = require('./workplace/workplace-poll-job')
 const setupWorkplaceAction = require("./workplace/select-workplace-action");
@@ -18,7 +21,7 @@ const app = new App({
         {
             path: '/internal/is_alive',
             method: ['GET'],
-            handler: (req, res) => {
+            handler: (_req: ParamsIncomingMessage, res: ServerResponse) => {
                 res.writeHead(200)
                 res.end('OK')
             }

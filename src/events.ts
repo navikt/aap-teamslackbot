@@ -1,6 +1,7 @@
+import {App} from "@slack/bolt";
 
-const setupEventListener = (app) => {
-    app.event('app_home_opened', async ({ event, client, context }) => {
+const setupEventListener = (app: App) => {
+    app.event('app_home_opened', async ({ event, client }) => {
         try {
             const result = await client.views.publish({
                 user_id: event.user,
