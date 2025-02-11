@@ -7,56 +7,49 @@ on:
       - main
 
 jobs:
-  build:
-    name: Build and push
+  build-and-push:
     runs-on: ubuntu-latest
+    env:
+      SKIP_YARN_COREPACK_CHECK: true
     permissions:
-      contents: 'read'
-      id-token: 'write'
-    timeout-minutes: 10
-    outputs:
-      image: ${{ steps.docker-build-push.outputs.image }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Upload public folder to NAV CDN
-        uses: nais/deploy/actions/cdn-upload/v2@master
-        with:
-          team: aap
-          source: ./public
-          destination: /aap-teamslackbot/
-          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
-          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
-      - name: Build and publish docker image
-        uses: nais/docker-build-push@v0
-        id: docker-build-push
-        with:
-          team: aap
-          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
-          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
-          tag: ${{ github.sha }}
-          build_args: |
-            APP_NAME=${{ github.event.repository.name }}
-      - name: Print docker tag
-        run: echo 'Docker-tag er ${{ steps.docker-build-push.outputs.image }} ' >> $GITHUB_STEP_SUMMARY
-  deploy:
-    name: dev-cluster
-    runs-on: ubuntu-latest
-    needs: build
-    timeout-minutes: 10
-    permissions:
-      contents: 'read'
-      id-token: 'write'
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v4
-      - uses: nais/login@v0
-        id: login
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://npm.pkg.github.com
+          cache: yarn
+      - name: Enable Corepack
+        run: corepack enable
+      - name: Install dependencies
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
+        if: steps.cache-node_modules.outputs.cache-hit != 'true'
+        run: yarn install --immutable
+      - name: Build
+        run: yarn build
+      - uses: nais/docker-build-push@v0
+        id: docker-push
         with:
           team: aap
-          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
           project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
+          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
+    outputs:
+      image: ${{ steps.docker-push.outputs.image }}
+
+  deploy-dev:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
       - uses: nais/deploy/actions/deploy@v2
         env:
+          PRINT_PAYLOAD: true
           CLUSTER: dev-gcp
           RESOURCE: .nais/dev.yaml
-          VAR: image=${{ needs.build.outputs.image }}
+          IMAGE: ${{ needs.build-and-push.outputs.image }}

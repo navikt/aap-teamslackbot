@@ -1,4 +1,12 @@
-const blocks = [
+import {MrkdwnElement, SectionBlockAccessory} from "@slack/types";
+
+export type WorkplaceBlock = {
+    type: 'section';
+    text: MrkdwnElement;
+    accessory: SectionBlockAccessory;
+} | { type: 'divider'}
+
+const blocks: WorkplaceBlock[] = [
     {
         "type": "divider"
     },
@@ -89,7 +97,7 @@ const blocks = [
     }
 ]
 
-const initWorkplaceBlocks = (title) => {
+const initWorkplaceBlocks = (title: string) => {
     const heading = {
         "type": "section",
         "text": {

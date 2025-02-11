@@ -1,4 +1,4 @@
-const showAndTellBlocks = (datoString) => {
+const showAndTellBlocks = (datoString: string) => {
     return [
     {
         "type": "section",

@@ -1,15 +1,20 @@
+import {isByWeeklyDate} from "src/utils/date";
+import {App} from "@slack/bolt";
+
 const CronJob = require('cron').CronJob
-const initWorkplaceBlocks = require("./workplace-blocks")
+const showAndTellBlocks = require("./show-and-tell-blocks");
 const isTodayAHoliday = require("../utils/holidays");
+const {parse} = require("date-fns");
 
 const TIMEZONE = 'Europe/Oslo'
+const startDateBiWeekly = parse('20/12/2024', 'dd/MM/yyyy', new Date())
 
 const now = () => {
     return new Date()
         .toLocaleTimeString('no-NO', { timeZone: TIMEZONE })
 }
 
-const setupJob = (app) => {
+const setupShowAndTellJob = (app: App) => {
     const onTick = async () => {
         console.log(`Running job @ ${now()}`)
 
@@ -18,20 +23,21 @@ const setupJob = (app) => {
             return
         }
 
-        let title;
-        const dayNumber = new Date().getDay();
-        if (dayNumber === 5) {
-            title = "Endelig helg! :star-struck: Hvor skal du jobbe på mandag?"
-        } else {
-            title = `Hvor skal du jobbe i morgen, ${ukedagNavn(dayNumber + 1)} ${imorgenDateString()}?`
+        const isByWeekly = isByWeeklyDate(startDateBiWeekly, new Date());
+        if(!isByWeekly) {
+            console.log(`Hopper over denne fredagen, bare annen hver`)
+            return;
         }
+
+        const dayNumber = new Date().getDay();
+        const datoString = `${ukedagNavn(dayNumber)} ${idagDateString()}?`
 
         try {
             const result = await app.client.chat.postMessage({
                 // channel: 'aap-teamslackbot-test', // Test channel
-                channel: 'po-aap-team-aap-privat',
+                channel: 'po-aap-team-aap',
                 // channel: 'teamslackbot',
-                blocks: initWorkplaceBlocks(title),
+                blocks: showAndTellBlocks(datoString),
                 text: 'Should display blocks containing buttons to select workplace'
             })
 
@@ -46,24 +52,22 @@ const setupJob = (app) => {
     };
 
     // const time = '0 */5 10 * * 1-5' // Test cron
-    const time = '00 14 * * 1-5' // kl 11:11:11, man-fre, alle uker, alle måneder
+    const time = '01 09 * * 5' // kl 11:11:11, man-fre, alle uker, alle måneder
 
-    console.log(`Init cronjob with crontime: ${time}`)
+    console.log(`Init cronjob showandtell with crontime: ${time}`)
 
     const job = new CronJob(time, onTick, null, false, TIMEZONE)
 
     job.start()
 }
-function ukedagNavn(dayNumber) {
+function ukedagNavn(dayNumber: number) {
     const dayNames = ['Søndag', 'Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag']
     return dayNames[dayNumber];
 }
-function imorgenDateString() {
+function idagDateString() {
     const today = new Date()
-    const tomorrow = new Date(today)
-    tomorrow.setDate(today.getDate() + 1)
     const monthNames = ['Januar', 'Februar','Mars', 'April','Mai', 'Juni','Juli', 'August','September','Oktober', 'November', 'Desember']
-    return `${tomorrow.getDate()}. ${monthNames[tomorrow.getMonth()]}`
+    return `${today.getDate()}. ${monthNames[today.getMonth()]}`
 }
 
-module.exports = setupJob
+module.exports = setupShowAndTellJob

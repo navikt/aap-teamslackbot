@@ -1,0 +1,27 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "src/*": ["src/*"]
+    },
+    "skipLibCheck": true,
+    "outDir": "./dist/",
+    "rootDir": ".",
+    "noEmit": false,
+    "resolveJsonModule": true,
+
+    "sourceMap": true,
+    "strict": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "esModuleInterop": true,
+
+    "verbatimModuleSyntax": false
+  },
+  "include": ["src"],
+  "exclude": [
+    "src/**/*.test.ts",
+    "src/**/*.mock.ts",
+  ]
+}
