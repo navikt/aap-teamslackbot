@@ -1,10 +1,10 @@
-import {hentDagensTekniskeVakt} from "src/vakt/teknisk-vaktliste";
-import {hentDagensTestoppfolgingsVakt} from "src/vakt/testoppfolging-vaktliste";
-import {vaktBlocks} from "src/vakt/vakt-blocks";
+import {hentDagensTekniskeVakt} from "./teknisk-vaktliste";
+import {hentDagensTestoppfolgingsVakt} from "./testoppfolging-vaktliste";
+import {vaktBlocks} from "./vakt-blocks";
 import {App} from "@slack/bolt";
+import {isTodayAHoliday} from "../utils/holidays";
+import {CronJob} from "cron";
 
-const isTodayAHoliday = require("../utils/holidays");
-const CronJob = require('cron').CronJob
 const TIMEZONE = 'Europe/Oslo'
 
 const now = () => {

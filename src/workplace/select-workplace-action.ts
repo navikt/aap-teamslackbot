@@ -1,5 +1,5 @@
 import { App, BlockElementAction} from "@slack/bolt";
-import {WorkplaceBlock} from "src/workplace/workplace-blocks";
+import {WorkplaceBlock} from "./workplace-blocks";
 
 const addOrRemoveUser = (block: WorkplaceBlock, userId: string) => {
     if(block.type === 'divider') {
@@ -68,12 +68,15 @@ export function setupWorkplaceAction(app: App) {
                 console.log(`channelid not found`)
                 return
             }
+            // @ts-ignore
             const blocks = await updateBlocks(body.user.id, body.message.blocks, body.actions)
 
             const result = await app.client.chat.update({
                 token: context.botToken,
+                // @ts-ignore
                 ts: body.message.ts,
                 channel: channelId,
+                // @ts-ignore
                 blocks,
                 text: "Some random message..."
             })

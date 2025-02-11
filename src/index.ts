@@ -2,11 +2,11 @@ import {ParamsIncomingMessage} from "@slack/bolt/dist/receivers/ParamsIncomingMe
 import {ServerResponse} from "http";
 
 import {App} from "@slack/bolt";
-import {setupVaktJob} from "src/vakt/vakt-job";
-import {setupShowAndTellJob} from "src/workplace/show-and-tell-job";
-import {setupEventListener} from "src/events";
-import {setupWorkplaceJob} from "src/workplace/workplace-poll-job";
-import {setupWorkplaceAction} from "src/workplace/select-workplace-action";
+import {setupVaktJob} from "./vakt/vakt-job";
+import {setupShowAndTellJob} from "./workplace/show-and-tell-job";
+import {setupEventListener} from "./events";
+import {setupWorkplaceJob} from "./workplace/workplace-poll-job";
+import {setupWorkplaceAction} from "./workplace/select-workplace-action";
 
 
 const PORT = process.env.PORT ? parseInt(process.env.PORT) : 3000

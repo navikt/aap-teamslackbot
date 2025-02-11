@@ -6,4 +6,4 @@ COPY dist ./dist
 COPY node_modules ./node_modules
 COPY package.json .
 
-CMD ["dist/src/index.js"]
+CMD ["dist/index.js"]

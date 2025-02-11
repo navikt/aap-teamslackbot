@@ -1,4 +1,4 @@
-import {isTodayAHoliday} from "src/utils/holidays";
+import {isTodayAHoliday} from "../utils/holidays";
 import {App} from "@slack/bolt";
 
 const CronJob = require('cron').CronJob

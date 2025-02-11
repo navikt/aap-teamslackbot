@@ -1,4 +1,4 @@
-import {isByWeeklyDate} from "src/utils/date";
+import {isByWeeklyDate} from "../utils/date";
 import {App} from "@slack/bolt";
 
 const CronJob = require('cron').CronJob
