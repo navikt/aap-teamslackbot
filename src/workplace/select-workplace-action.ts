@@ -40,11 +40,16 @@ const updateBlocks = async (username: string, blocks: WorkplaceBlock[], actions:
     const action = actions[0]
 
     return blocks.map((block) => {
-        if( block.type !== 'section') {
+        if( block?.type !== 'section') {
+            console.log('not block type section', block)
             return block;
-        } else if(action.type !== 'button') {
+        } else if(action?.type !== 'button') {
+            console.log('not action type button', block)
             return block;
-        } else if (block.accessory.type === 'button' && block.accessory.value === action.value) {
+        } else if (block?.accessory?.type === 'button' && block?.accessory?.value === action?.value) {
+            console.log('update this block', block?.accessory )
+            console.log('block accessory type', block?.accessory?.type,  block?.accessory?.type === 'button'  )
+            console.log('block accessory value', block?.accessory?.value, action?.value, block?.accessory?.value === action?.value  )
             return addOrRemoveUser(block as WorkplaceBlock, username)
         } else {
             return block;
