@@ -7,7 +7,7 @@ const isTodayAHoliday = require("../utils/holidays");
 const {parse} = require("date-fns");
 
 const TIMEZONE = 'Europe/Oslo'
-const startDateBiWeekly = parse('20/12/2024', 'dd/MM/yyyy', new Date())
+const startDateBiWeekly = parse('14/02/2024', 'dd/MM/yyyy', new Date())
 
 const now = () => {
     return new Date()
@@ -51,8 +51,8 @@ export function setupShowAndTellJob(app: App) {
         }
     };
 
-    // const time = '0 */5 10 * * 1-5' // Test cron
-    const time = '01 09 * * 5' // kl 11:11:11, man-fre, alle uker, alle måneder
+    // const time = '01 09 * * 5' // kl 11:11:11, man-fre, alle uker, alle måneder
+    const time = '45 11 * * 5' // kl 11:11:11, man-fre, alle uker, alle måneder
 
     console.log(`Init cronjob showandtell with crontime: ${time}`)
 
