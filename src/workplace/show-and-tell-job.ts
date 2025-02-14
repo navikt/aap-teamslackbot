@@ -52,7 +52,7 @@ export function setupShowAndTellJob(app: App) {
     };
 
     // const time = '01 09 * * 5' // kl 11:11:11, man-fre, alle uker, alle måneder
-    const time = '45 11 * * 5' // kl 11:11:11, man-fre, alle uker, alle måneder
+    const time = '57 11 * * 5' // kl 11:11:11, man-fre, alle uker, alle måneder
 
     console.log(`Init cronjob showandtell with crontime: ${time}`)
 
