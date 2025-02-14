@@ -2,7 +2,6 @@ const utviklere = [
     'UR5LG64LD',   // Grizzly
     'U03LBKLNNAF', // Vetle
     'U07946678MA', // Henrik Bugge
-    'U06UGEL1XFD',      // Alexander
     'U076BSY04G3',      // Fredrik
     'U7SRD021L',        // Frode
     'U075Y4DREES',      // Jackson
