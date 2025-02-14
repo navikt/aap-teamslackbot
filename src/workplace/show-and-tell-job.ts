@@ -1,9 +1,9 @@
 import {isByWeeklyDate} from "../utils/date";
 import {App} from "@slack/bolt";
+import {isTodayAHoliday} from "../utils/holidays";
 
 const CronJob = require('cron').CronJob
 const showAndTellBlocks = require("./show-and-tell-blocks");
-const isTodayAHoliday = require("../utils/holidays");
 const {parse} = require("date-fns");
 
 const TIMEZONE = 'Europe/Oslo'
@@ -52,7 +52,7 @@ export function setupShowAndTellJob(app: App) {
     };
 
     // const time = '01 09 * * 5' // kl 11:11:11, man-fre, alle uker, alle måneder
-    const time = '11 12 * * 5' // kl 11:11:11, man-fre, alle uker, alle måneder
+    const time = '20 12 * * 5' // kl 11:11:11, man-fre, alle uker, alle måneder
 
     console.log(`Init cronjob showandtell with crontime: ${time}`)
 
