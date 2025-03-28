@@ -1,17 +1,19 @@
 const utviklere = [
+    'U08HFRGBJ9G',      // Marianne
+    'UEHPV7NAE',        // Matias
+    'U02KTLW1QLC',      // Øivind
+    'U0184NNTXL5' ,      // Peter
+    'U03HT22GCBU',      // Thomas
+    'U02EFCUUQF8',      // Tor
     'UR5LG64LD',   // Grizzly
     'U03LBKLNNAF', // Vetle
     'U07946678MA', // Henrik Bugge
     'U076BSY04G3',      // Fredrik
     'U7SRD021L',        // Frode
-    'U075Y4DREES',      // Jackson
     'U075X6VRNLF',      // Ine
-    'U6P86PP98',        // Marius
-    'UEHPV7NAE',        // Matias
-    'U02KTLW1QLC',      // Øivind
-   'U0184NNTXL5' ,      // Peter
-    'U03HT22GCBU',      // Thomas
-    'U02EFCUUQF8',      // Tor
+    'U0115SZM8PQ',      // Charlie
+    'U01CH1LE2FK',      // Nicolas
+    'U08EGKCC8FM',      // Selma
 ]
 export function hentDagensTekniskeVakt() {
     var daysSinceEpoc = Math.floor(Date.now() / 24 / 60 / 60 / 1000)
