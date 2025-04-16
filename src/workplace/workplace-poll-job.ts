@@ -1,4 +1,4 @@
-import {isTodayAHoliday} from "../utils/holidays";
+import {isDateAHoliday} from "../utils/holidays";
 import {App} from "@slack/bolt";
 
 const CronJob = require('cron').CronJob
@@ -15,7 +15,7 @@ export function setupWorkplaceJob(app: App) {
     const onTick = async () => {
         console.log(`Running job @ ${now()}`)
 
-        if(isTodayAHoliday()){
+        if(isDateAHoliday(tomorrowDate())){
             console.log('God ferie')
             return
         }
@@ -66,4 +66,10 @@ function imorgenDateString() {
     tomorrow.setDate(today.getDate() + 1)
     const monthNames = ['Januar', 'Februar','Mars', 'April','Mai', 'Juni','Juli', 'August','September','Oktober', 'November', 'Desember']
     return `${tomorrow.getDate()}. ${monthNames[tomorrow.getMonth()]}`
+}
+function tomorrowDate() {
+    const today = new Date()
+    const tomorrow = new Date(today)
+    tomorrow.setDate(today.getDate() + 1)
+    return tomorrow;
 }

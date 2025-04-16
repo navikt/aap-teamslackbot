@@ -2,8 +2,8 @@ import {hentDagensTekniskeVakt} from "./teknisk-vaktliste";
 import {hentDagensTestoppfolgingsVakt} from "./testoppfolging-vaktliste";
 import {vaktBlocks} from "./vakt-blocks";
 import {App} from "@slack/bolt";
-import {isTodayAHoliday} from "../utils/holidays";
 import {CronJob} from "cron";
+import {isDateAHoliday} from "../utils/holidays";
 
 const TIMEZONE = 'Europe/Oslo'
 
@@ -16,7 +16,7 @@ export function setupVaktJob(app: App) {
     const onTick = async () => {
         console.log(`Running vakt-job @ ${now()}`)
 
-        if(isTodayAHoliday()){
+        if(isDateAHoliday(new Date())){
             console.log('God ferie')
             return
         }

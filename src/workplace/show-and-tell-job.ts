@@ -1,6 +1,6 @@
 import {isByWeeklyDate} from "../utils/date";
 import {App} from "@slack/bolt";
-import {isTodayAHoliday} from "../utils/holidays";
+import {isDateAHoliday} from "../utils/holidays";
 
 const CronJob = require('cron').CronJob
 const showAndTellBlocks = require("./show-and-tell-blocks");
@@ -18,7 +18,7 @@ export function setupShowAndTellJob(app: App) {
     const onTick = async () => {
         console.log(`Running job @ ${now()}`)
 
-        if(isTodayAHoliday()){
+        if(isDateAHoliday(new Date())){
             console.log('God ferie')
             return
         }
