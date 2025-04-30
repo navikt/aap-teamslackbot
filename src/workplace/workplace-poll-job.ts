@@ -1,5 +1,6 @@
 import {isDateAHoliday} from "../utils/holidays";
 import {App} from "@slack/bolt";
+import {addDays} from "date-fns";
 
 const CronJob = require('cron').CronJob
 const initWorkplaceBlocks = require("./workplace-blocks")
@@ -14,14 +15,17 @@ const now = () => {
 export function setupWorkplaceJob(app: App) {
     const onTick = async () => {
         console.log(`Running job @ ${now()}`)
+        const dayNumber = new Date().getDay();
+        const checkDate = dayNumber === 5
+            ? addDays(new Date(),3)
+          : tomorrowDate();
 
-        if(isDateAHoliday(tomorrowDate())){
+        if(isDateAHoliday(checkDate)){
             console.log('God ferie')
             return
         }
 
         let title;
-        const dayNumber = new Date().getDay();
         if (dayNumber === 5) {
             title = "Endelig helg! :star-struck: Hvor skal du jobbe på mandag?"
         } else {
