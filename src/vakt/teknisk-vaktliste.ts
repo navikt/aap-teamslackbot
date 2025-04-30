@@ -4,8 +4,7 @@ const utviklere = [
     'U02KTLW1QLC',      // Øivind
     'U0184NNTXL5' ,      // Peter
     'U03HT22GCBU',      // Thomas
-    'U02EFCUUQF8',      // Tor
-    'UR5LG64LD',   // Grizzly
+    // 'U02EFCUUQF8',      // Tor
     'U03LBKLNNAF', // Vetle
     'U07946678MA', // Henrik Bugge
     'U076BSY04G3',      // Fredrik
