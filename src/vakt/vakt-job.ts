@@ -27,7 +27,7 @@ export function setupVaktJob(app: App) {
         try {
             const result = await app.client.chat.postMessage({
                 // channel: 'aap-teamslackbot-test', // Test channel
-                channel: 'po-aap-team-aap-privat',
+                channel: 'po-aap-team-aap',
                 unfurl_links: false,
                 blocks: vaktBlocks(dagensTekniskeVakt, dagensTestVakt),
                 text: 'Should display blocks containing dagens tekniske vakt'
