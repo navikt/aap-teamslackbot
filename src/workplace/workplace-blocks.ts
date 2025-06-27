@@ -14,7 +14,7 @@ const blocks: WorkplaceBlock[] = [
         "type": "section",
         "text": {
             "type": "mrkdwn",
-            "text": ":zoom-icon: Hjemme / Zoom \`2\`\n <@U03LBKLNNAF>, <@U07946678MA>"
+            "text": ":zoom-icon: Hjemme / Zoom \`2\`\n <@U07946678MA>"
         },
         "accessory": {
             "type": "button",
