@@ -14,7 +14,9 @@ const now = () => {
 
 export function setupVaktJob(app: App) {
     const onTick = async () => {
-        console.log(`Running vakt-job @ ${now()}`)
+      console.log(`Running vakt-job @ ${now()}`)
+      // EARLY RETURN I SOMMER
+      return
 
         if(isDateAHoliday(new Date())){
             console.log('God ferie')
