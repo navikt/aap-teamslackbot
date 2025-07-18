@@ -16,21 +16,37 @@ export function setupVaktJob(app: App) {
     const onTick = async () => {
         console.log(`Running vakt-job @ ${now()}`)
 
-        if(isDateAHoliday(new Date())){
+        const today = new Date();
+
+        if(isDateAHoliday(today)){
             console.log('God ferie')
             return
         }
 
 
+        const isMonday = today.getDay() === 1;
+
         const dagensTekniskeVakt = hentDagensTekniskeVakt();
         const dagensTestVakt = hentDagensTestoppfolgingsVakt();
+
+        const blocks = isMonday
+            ? vaktBlocksMandag(
+                dagensTekniskeVakt,
+                dagensTestVakt,
+                hentUkensTekniskeVakter(),
+                hentNesteFemDagersTestoppfolgingsVakter()
+            )
+            : vaktBlocks(dagensTekniskeVakt, dagensTestVakt);
+
         try {
             const result = await app.client.chat.postMessage({
                 // channel: 'aap-teamslackbot-test', // Test channel
                 channel: 'po-aap-team-aap',
                 unfurl_links: false,
-                blocks: vaktBlocks(dagensTekniskeVakt, dagensTestVakt),
-                text: 'Should display blocks containing dagens tekniske vakt'
+                blocks: blocks,
+                text: isMonday
+                    ? 'Should display blocks containing weekly shifts'
+                    : 'Should display blocks containing dagens tekniske vakt',
             })
 
             if (result.ok) {

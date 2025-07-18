@@ -19,3 +19,17 @@ export function hentDagensTestoppfolgingsVakt() {
     return utviklere[vaktIndex];
 }
 
+export function hentNesteFemDagersTestoppfolgingsVakter() {
+    const ukedager = ['Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag'];
+    const daysSinceEpoc = Math.floor(Date.now() / 24 / 60 / 60 / 1000);
+    const numberOfSaturdaysSinceEpoc = Math.floor((daysSinceEpoc + 4) / 7);
+    const numberOfSundaysSinceEpoc = Math.floor((daysSinceEpoc + 5) / 7);
+    const daysSinceEpocWithoutWeekends = daysSinceEpoc - numberOfSaturdaysSinceEpoc - numberOfSundaysSinceEpoc;
+
+    const nesteFemDagerVakter = Array.from({ length: 5 }, (_, index) => {
+        const vaktIndex = (daysSinceEpocWithoutWeekends + index) % utviklere.length;
+        return `${ukedager[index]}: ${utviklere[vaktIndex]}`;
+    });
+
+    return nesteFemDagerVakter;
+}

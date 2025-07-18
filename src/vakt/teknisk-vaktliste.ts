@@ -29,3 +29,17 @@ export function hentDagensTekniskeVakt() {
     return utviklere[vaktIndex];
 }
 
+export function hentUkensTekniskeVakter() {
+    const ukedager = ['Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag'];
+    const daysSinceEpoc = Math.floor(Date.now() / 24 / 60 / 60 / 1000);
+    const numberOfSaturdaysSinceEpoc = Math.floor((daysSinceEpoc + 4) / 7);
+    const numberOfSundaysSinceEpoc = Math.floor((daysSinceEpoc + 5) / 7);
+    const daysSinceEpocWithoutWeekends = daysSinceEpoc - numberOfSaturdaysSinceEpoc - numberOfSundaysSinceEpoc;
+
+    const ukensVakter = ukedager.map((dag, index) => {
+        const vaktIndex = (daysSinceEpocWithoutWeekends + index) % utviklere.length;
+        return `${dag}: ${utviklere[vaktIndex]}`;
+    });
+
+    return ukensVakter;
+}
