@@ -1,9 +1,11 @@
-import {hentDagensTekniskeVakt} from "./teknisk-vaktliste";
-import {hentDagensTestoppfolgingsVakt} from "./testoppfolging-vaktliste";
+import {hentDagensTekniskeVakt, hentUkensTekniskeVakter} from "./teknisk-vaktliste";
+import {hentDagensTestoppfolgingsVakt, hentNesteFemDagersTestoppfolgingsVakter} from "./testoppfolging-vaktliste";
 import {vaktBlocks} from "./vakt-blocks";
 import {App} from "@slack/bolt";
 import {CronJob} from "cron";
 import {isDateAHoliday} from "../utils/holidays";
+import { isMonday } from "date-fns";
+import {vaktBlocksMandag} from "./vakt-block-mandag";
 
 const TIMEZONE = 'Europe/Oslo'
 
@@ -24,15 +26,11 @@ export function setupVaktJob(app: App) {
         }
 
 
-        const isMonday = today.getDay() === 1;
-
         const dagensTekniskeVakt = hentDagensTekniskeVakt();
         const dagensTestVakt = hentDagensTestoppfolgingsVakt();
 
-        const blocks = isMonday
+        const blocks = isMonday(today)
             ? vaktBlocksMandag(
-                dagensTekniskeVakt,
-                dagensTestVakt,
                 hentUkensTekniskeVakter(),
                 hentNesteFemDagersTestoppfolgingsVakter()
             )
@@ -44,7 +42,7 @@ export function setupVaktJob(app: App) {
                 channel: 'po-aap-team-aap',
                 unfurl_links: false,
                 blocks: blocks,
-                text: isMonday
+                text: isMonday(today)
                     ? 'Should display blocks containing weekly shifts'
                     : 'Should display blocks containing dagens tekniske vakt',
             })
