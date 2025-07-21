@@ -1,3 +1,6 @@
+import { format } from 'date-fns';
+import { nb } from 'date-fns/locale';
+
 const utviklere = [
     'UTHP0E3N2', // Eirik
     'U06LEHE93GE', // Henning
@@ -19,3 +22,16 @@ export function hentDagensTestoppfolgingsVakt() {
     return utviklere[vaktIndex];
 }
 
+export function hentNesteFemDagersTestoppfolgingsVakter() {
+    const daysSinceEpoc = Math.floor(Date.now() / 24 / 60 / 60 / 1000);
+    const numberOfSaturdaysSinceEpoc = Math.floor((daysSinceEpoc + 4) / 7);
+    const numberOfSundaysSinceEpoc = Math.floor((daysSinceEpoc + 5) / 7);
+    const daysSinceEpocWithoutWeekends = daysSinceEpoc - numberOfSaturdaysSinceEpoc - numberOfSundaysSinceEpoc;
+
+    const nesteFemDagerVakter = Array.from({ length: 5 }, (_, index) => {
+        const vaktIndex = (daysSinceEpocWithoutWeekends + index) % utviklere.length;
+        return `${format(new Date(2023, 0, index + 2), 'EEEE', { locale: nb })}: ${utviklere[vaktIndex]}`;
+    });
+
+    return nesteFemDagerVakter;
+}
