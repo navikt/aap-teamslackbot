@@ -35,8 +35,7 @@ export function setupWorkplaceJob(app: App) {
         try {
             const result = await app.client.chat.postMessage({
                 // channel: 'aap-teamslackbot-test', // Test channel
-                channel: 'po-aap-team-aap-privat',
-                // channel: 'teamslackbot',
+                channel: 'C067RJV8F89', // team-aap-privat
                 blocks: initWorkplaceBlocks(title),
                 text: 'Should display blocks containing buttons to select workplace'
             })
@@ -52,7 +51,7 @@ export function setupWorkplaceJob(app: App) {
     };
 
     // const time = '0 */5 10 * * 1-5' // Test cron
-    const time = '00 14 * * 1-5' // kl 11:11:11, man-fre, alle uker, alle måneder
+    const time = '00 14 * * 1-5' // kl 14:00:00, man-fre, alle uker, alle måneder
 
     console.log(`Init cronjob with crontime: ${time}`)
 

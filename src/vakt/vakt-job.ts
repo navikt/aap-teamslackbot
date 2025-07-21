@@ -16,7 +16,9 @@ const now = () => {
 
 export function setupVaktJob(app: App) {
     const onTick = async () => {
-        console.log(`Running vakt-job @ ${now()}`)
+      console.log(`Running vakt-job @ ${now()}`)
+      // EARLY RETURN I SOMMER
+      return
 
         const today = new Date();
 
@@ -39,7 +41,7 @@ export function setupVaktJob(app: App) {
         try {
             const result = await app.client.chat.postMessage({
                 // channel: 'aap-teamslackbot-test', // Test channel
-                channel: 'po-aap-team-aap',
+                channel: 'team-aap-åpen',
                 unfurl_links: false,
                 blocks: blocks,
                 text: isMonday(today)
