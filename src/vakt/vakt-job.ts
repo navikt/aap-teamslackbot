@@ -4,25 +4,23 @@ import {vaktBlocks} from "./vakt-blocks";
 import {App} from "@slack/bolt";
 import {CronJob} from "cron";
 import {isDateAHoliday} from "../utils/holidays";
-import { isMonday } from "date-fns";
+import {isMonday} from "date-fns";
 import {vaktBlocksMandag} from "./vakt-block-mandag";
 
 const TIMEZONE = 'Europe/Oslo'
 
 const now = () => {
     return new Date()
-        .toLocaleTimeString('no-NO', { timeZone: TIMEZONE })
+        .toLocaleTimeString('no-NO', {timeZone: TIMEZONE})
 }
 
 export function setupVaktJob(app: App) {
     const onTick = async () => {
-      console.log(`Running vakt-job @ ${now()}`)
-      // EARLY RETURN I SOMMER
-      return
+        console.log(`Running vakt-job @ ${now()}`)
 
         const today = new Date();
 
-        if(isDateAHoliday(today)){
+        if (isDateAHoliday(today)) {
             console.log('God ferie')
             return
         }
