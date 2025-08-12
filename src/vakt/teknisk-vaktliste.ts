@@ -17,6 +17,7 @@ const utviklere = [
     'U02TAL2D5L2',      // Henrik Gundersen
     'U64P58KM3',        // Steffen
     'U60QWL9LN',        // Hein
+    'U08PP82948K',      // Martin 
 ]
 export function hentDagensTekniskeVakt() {
     var daysSinceEpoc = Math.floor(Date.now() / 24 / 60 / 60 / 1000)
