@@ -1,5 +1,5 @@
 const utviklere = [
-    'U08HFRGBJ9G',      // Marianne
+    // 'U08HFRGBJ9G',   // Marianne
     'UEHPV7NAE',        // Matias
     'U02KTLW1QLC',      // Øivind
     'U0184NNTXL5' ,     // Peter
@@ -17,7 +17,9 @@ const utviklere = [
     'U02TAL2D5L2',      // Henrik Gundersen
     'U64P58KM3',        // Steffen
     'U60QWL9LN',        // Hein
-    'U08PP82948K',      // Martin 
+    'UAU5L6EJZ',        // Thao
+    'U08PP82948K',      // Martin
+    'U08RKTS9N23',      // Simen
 ]
 export function hentDagensTekniskeVakt() {
     var daysSinceEpoc = Math.floor(Date.now() / 24 / 60 / 60 / 1000)
