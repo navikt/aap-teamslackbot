@@ -35,7 +35,7 @@ export function setupShowAndTellJob(app: App) {
         try {
             const result = await app.client.chat.postMessage({
                 // channel: 'aap-teamslackbot-test', // Test channel
-                channel: 'po-aap-team-aap',
+                channel: 'team-aap-åpen',
                 // channel: 'teamslackbot',
                 blocks: showAndTellBlocks(datoString),
                 text: 'Should display blocks containing buttons to select workplace'
