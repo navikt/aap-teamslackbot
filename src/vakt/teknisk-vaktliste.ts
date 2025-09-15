@@ -1,26 +1,25 @@
 const utviklere = [
-    // 'U08HFRGBJ9G',   // Marianne
-    'UEHPV7NAE',        // Matias
-    'U02KTLW1QLC',      // Øivind
-    'U0184NNTXL5' ,     // Peter
-    'U03HT22GCBU',      // Thomas
-    'U02EFCUUQF8',      // Tor
-    'U03LBKLNNAF',      // Vetle
-    'U07946678MA',      // Henrik Bugge
-    'U076BSY04G3',      // Fredrik
-    'U7SRD021L',        // Frode
-    'U075X6VRNLF',      // Ine
-    'U0115SZM8PQ',      // Charlie
-    'U01CH1LE2FK',      // Nicolas
-    'U08EGKCC8FM',      // Selma
-    'U08MD6XU9K6',      // Greger
-    'U02TAL2D5L2',      // Henrik Gundersen
-    'U64P58KM3',        // Steffen
-    'U60QWL9LN',        // Hein
-    'UAU5L6EJZ',        // Thao
-    'U08PP82948K',      // Martin
-    'U08RKTS9N23',      // Simen
-    'U08SN7B010Q',      // Per Christian
+  'U075X6VRNLF',      // Ine
+  'U0115SZM8PQ',      // Charlie
+  'U01CH1LE2FK',      // Nicolas
+  'U08EGKCC8FM',      // Selma
+  'U08MD6XU9K6',      // Greger
+  'U02TAL2D5L2',      // Henrik Gundersen
+  'U64P58KM3',        // Steffen
+  'U60QWL9LN',        // Hein
+  'UAU5L6EJZ',        // Thao
+  'U08PP82948K',      // Martin
+  'U08RKTS9N23',      // Simen
+  'U08SN7B010Q',      // Per Christian
+  'UEHPV7NAE',        // Matias
+  'U02KTLW1QLC',      // Øivind
+  'U0184NNTXL5' ,     // Peter
+  // 'U03HT22GCBU',      // Thomas
+  'U02EFCUUQF8',      // Tor
+  'U03LBKLNNAF',      // Vetle
+  'U07946678MA',      // Henrik Bugge
+  'U076BSY04G3',      // Fredrik
+  'U7SRD021L',        // Frode
 ]
 export function hentDagensTekniskeVakt() {
     var daysSinceEpoc = Math.floor(Date.now() / 24 / 60 / 60 / 1000)

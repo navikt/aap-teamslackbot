@@ -2,14 +2,13 @@ import { format } from 'date-fns';
 import { nb } from 'date-fns/locale';
 
 const utviklere = [
-    'UTHP0E3N2', // Eirik
-    'U06LEHE93GE', // Henning
-    'USA3XHAF6', // Sara
-    'ULYD63CP6', // Tobias
-    'U06BV6T5PP1', // Nina
-    'U0162JK5N01', // Jeanette
-    'UDZ2TFBA4', // Jostein
-    'UD59YS6TC', // Øyvind
+  'U06BV6T5PP1', // Nina
+  'U0162JK5N01', // Jeanette
+  'UDZ2TFBA4', // Jostein
+  'UD59YS6TC', // Øyvind
+  'UTHP0E3N2', // Eirik
+  'U06LEHE93GE', // Henning
+  'USA3XHAF6', // Sara
 ]
 export function hentDagensTestoppfolgingsVakt() {
     var daysSinceEpoc = Math.floor(Date.now() / 24 / 60 / 60 / 1000)
