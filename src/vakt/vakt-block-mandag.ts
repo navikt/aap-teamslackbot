@@ -39,7 +39,7 @@ export function vaktBlocksMandag(ukensTekniskeVakter: string[],
             "type": "section",
             "text": {
                 "type": "mrkdwn",
-                "text": `\nHovedansvar for å følge opp testerene i Teams-kanalen`
+                "text": `\n<@U01PB1AMGJE> har hovedansvar for å følge opp testerene i Teams-kanalen`
             }
         },
     ]

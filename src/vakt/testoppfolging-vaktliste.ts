@@ -6,7 +6,7 @@ const utviklere = [
   'U0162JK5N01', // Jeanette
   'UDZ2TFBA4', // Jostein
   'UD59YS6TC', // Øyvind
-  'UTHP0E3N2', // Eirik
+  'U089U7GCC7L', // Thea
   'U06LEHE93GE', // Henning
   'USA3XHAF6', // Sara
 ]
