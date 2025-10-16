@@ -462,10 +462,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@slack/types@npm:^2.11.0, @slack/types@npm:^2.13.0, @slack/types@npm:^2.16.0":
+"@slack/types@npm:^2.11.0, @slack/types@npm:^2.13.0":
   version: 2.16.0
   resolution: "@slack/types@npm:2.16.0"
   checksum: f1db2b8c18af245f78d5c178d98ed57fa5c8c18a1ea2e922bc0d330178a483ee7a29834b42a6710ece005789d91266d62195c93e8e2411ca707f8e438442c7f1
+  languageName: node
+  linkType: hard
+
+"@slack/types@npm:^2.17.0":
+  version: 2.17.0
+  resolution: "@slack/types@npm:2.17.0"
+  checksum: 57cad4b3153589707fef50c7a231921364d10d8f4a3e4d342c718d4aa69f5b3541fee686e8b2d93d46dd4c9842adebe5d3bae6530e4ad8719c1ec5d46b0ec157
   languageName: node
   linkType: hard
 
@@ -764,11 +771,11 @@ __metadata:
   resolution: "aap-teamslackbot@workspace:."
   dependencies:
     "@slack/bolt": 3.22.0
-    "@slack/types": ^2.16.0
+    "@slack/types": ^2.17.0
     "@types/node": ^22.18.0
     cron: ^3.1.4
     date-fns: ^4.1.0
-    typescript: ^5.9.2
+    typescript: ^5.9.3
     vitest: ^3.2.4
   languageName: unknown
   linkType: soft
@@ -3599,23 +3606,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^5.9.2":
-  version: 5.9.2
-  resolution: "typescript@npm:5.9.2"
+"typescript@npm:^5.9.3":
+  version: 5.9.3
+  resolution: "typescript@npm:5.9.3"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: f619cf6773cfe31409279711afd68cdf0859780006c50bc2a7a0c3227f85dea89a3b97248846326f3a17dad72ea90ec27cf61a8387772c680b2252fd02d8497b
+  checksum: 0d0ffb84f2cd072c3e164c79a2e5a1a1f4f168e84cb2882ff8967b92afe1def6c2a91f6838fb58b168428f9458c57a2ba06a6737711fdd87a256bbe83e9a217f
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^5.9.2#~builtin<compat/typescript>":
-  version: 5.9.2
-  resolution: "typescript@patch:typescript@npm%3A5.9.2#~builtin<compat/typescript>::version=5.9.2&hash=5786d5"
+"typescript@patch:typescript@^5.9.3#~builtin<compat/typescript>":
+  version: 5.9.3
+  resolution: "typescript@patch:typescript@npm%3A5.9.3#~builtin<compat/typescript>::version=5.9.3&hash=5786d5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: f2327af06fce458b53e02df26b880528636c333bce22e557ff6723cdd0576a2cec75daed37eeb8d330b94fef22be4f19b06d8922793ada5d322b8197efd9391e
+  checksum: a5a6dc399d3761ded54192031f11d3ad5df8001c7febe3fbbc8098efcb552cdf8f2f402b3618c56dafcd04fef63dee005f4900f608e185404caedc46480539ed
   languageName: node
   linkType: hard
 
