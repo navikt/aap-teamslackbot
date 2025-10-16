@@ -49,7 +49,7 @@ export function setupVaktJob(app: App) {
           console.error(e)
         }
 
-        if(isFriday(today)) {
+        // if(isFriday(today)) {
           try {
             const result = await app.client.chat.postMessage({
               channel: 'aap-teamslackbot-test', // Test channel
@@ -70,10 +70,10 @@ export function setupVaktJob(app: App) {
           } catch (e) {
             console.error(e)
           }
-        }
+        // }
     };
 
-    const time = '30 10 * * 1-5' // kl 11:11:11, man-fre, alle uker, alle måneder
+    const time = '50 10 * * 1-5' // kl 11:11:11, man-fre, alle uker, alle måneder
 
     console.log(`Init cronjob vaktrotasjon with crontime: ${time}`)
 
