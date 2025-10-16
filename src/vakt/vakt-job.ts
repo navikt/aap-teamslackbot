@@ -1,11 +1,11 @@
-import {hentDagensTekniskeVakt, hentUkensTekniskeVakter} from "./teknisk-vaktliste";
+import {hentDagensTekniskeVakt, hentNesteUkesTekniskeVakter} from "./teknisk-vaktliste";
 import {hentDagensTestoppfolgingsVakt, hentNesteFemDagersTestoppfolgingsVakter} from "./testoppfolging-vaktliste";
 import {vaktBlocks} from "./vakt-blocks";
 import {App} from "@slack/bolt";
 import {CronJob} from "cron";
 import {isDateAHoliday} from "../utils/holidays";
-import {isMonday} from "date-fns";
-import {vaktBlocksMandag} from "./vakt-block-mandag";
+import {isFriday, isMonday} from "date-fns";
+import {vaktBlocksFredag} from "./vakt-block-mandag";
 
 const TIMEZONE = 'Europe/Oslo'
 
@@ -29,22 +29,15 @@ export function setupVaktJob(app: App) {
         const dagensTekniskeVakt = hentDagensTekniskeVakt();
         const dagensTestVakt = hentDagensTestoppfolgingsVakt();
 
-        const blocks = isMonday(today)
-            ? vaktBlocksMandag(
-                hentUkensTekniskeVakter(),
-                hentNesteFemDagersTestoppfolgingsVakter()
-            )
-            : vaktBlocks(dagensTekniskeVakt, dagensTestVakt);
+        const dailyBlocks = vaktBlocks(dagensTekniskeVakt, dagensTestVakt);
 
         try {
             const result = await app.client.chat.postMessage({
-                // channel: 'aap-teamslackbot-test', // Test channel
-                channel: 'team-aap-åpen',
+                channel: 'aap-teamslackbot-test', // Test channel
+                // channel: 'team-aap-åpen',
                 unfurl_links: false,
-                blocks: blocks,
-                text: isMonday(today)
-                    ? 'Should display blocks containing weekly shifts'
-                    : 'Should display blocks containing dagens tekniske vakt',
+                blocks: dailyBlocks,
+                text: 'Should display blocks containing dagens tekniske vakt',
             })
 
             if (result.ok) {
@@ -53,11 +46,34 @@ export function setupVaktJob(app: App) {
                 console.error(`Error on postMessage: ${result.error}`)
             }
         } catch (e) {
+          console.error(e)
+        }
+
+        if(isFriday(today)) {
+          try {
+            const result = await app.client.chat.postMessage({
+              channel: 'aap-teamslackbot-test', // Test channel
+              // channel: 'team-aap-åpen',
+              unfurl_links: false,
+              blocks: vaktBlocksFredag(
+                hentNesteUkesTekniskeVakter(),
+                hentNesteFemDagersTestoppfolgingsVakter()
+              ),
+              text: 'Should display blocks containing dagens tekniske vakt',
+            })
+
+            if (result.ok) {
+              console.log('Message sent OK')
+            } else {
+              console.error(`Error on postMessage: ${result.error}`)
+            }
+          } catch (e) {
             console.error(e)
+          }
         }
     };
 
-    const time = '58 07 * * 1-5' // kl 11:11:11, man-fre, alle uker, alle måneder
+    const time = '30 10 * * 1-5' // kl 11:11:11, man-fre, alle uker, alle måneder
 
     console.log(`Init cronjob vaktrotasjon with crontime: ${time}`)
 

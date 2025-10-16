@@ -32,15 +32,17 @@ export function hentDagensTekniskeVakt() {
     return utviklere[vaktIndex];
 }
 
-export function hentUkensTekniskeVakter() {
+export function hentNesteUkesTekniskeVakter() {
     const ukedager = ['Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag'];
     const daysSinceEpoc = Math.floor(Date.now() / 24 / 60 / 60 / 1000);
     const numberOfSaturdaysSinceEpoc = Math.floor((daysSinceEpoc + 4) / 7);
     const numberOfSundaysSinceEpoc = Math.floor((daysSinceEpoc + 5) / 7);
     const daysSinceEpocWithoutWeekends = daysSinceEpoc - numberOfSaturdaysSinceEpoc - numberOfSundaysSinceEpoc;
 
+    // legger til offset siden vi nå skal poste denne på fredager og vise neste ukes vakter
+    const offsetFraFredagUtenHelgedager = 1
     const ukensVakter = ukedager.map((dag, index) => {
-        const vaktIndex = (daysSinceEpocWithoutWeekends + index) % utviklere.length;
+        const vaktIndex = (daysSinceEpocWithoutWeekends + index + offsetFraFredagUtenHelgedager) % utviklere.length;
         return `${dag}: ${utviklere[vaktIndex]}`;
     });
 

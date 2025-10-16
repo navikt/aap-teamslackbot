@@ -1,12 +1,12 @@
-export function vaktBlocksMandag(ukensTekniskeVakter: string[],
-                                 ukensTestVakter: string[]
+export function vaktBlocksFredag(nesteUkesTekniskeVakter: string[],
+                                 nesteUkesTestVakter: string[]
 ) {
     const rutineLink = "<https://confluence.adeo.no/x/xzA1Jg|Rutine>";
 
-    const tekniskeVakterListe = ukensTekniskeVakter
+    const tekniskeVakterListe = nesteUkesTekniskeVakter
         .map((vakt) => `${vakt.split(': ')[0]} - <@${vakt.split(': ')[1]}>`)
         .join('\n');
-    const testVakterListe = ukensTestVakter
+    const testVakterListe = nesteUkesTestVakter
         .map((vakt) => `${vakt.split(': ')[0]} - <@${vakt.split(': ')[1]}>`)
         .join('\n');
 
@@ -25,14 +25,14 @@ export function vaktBlocksMandag(ukensTekniskeVakter: string[],
             type: "section",
             text: {
                 type: "mrkdwn",
-                text: `*Ukens tekniske vakter:*\n${tekniskeVakterListe}`,
+                text: `*Neste ukes tekniske vakter:*\n${tekniskeVakterListe}`,
             },
         },
         {
             type: "section",
             text: {
                 type: "mrkdwn",
-                text: `*Ukens funksjonelle vakter:*\n${testVakterListe}`,
+                text: `*Neste ukes funksjonelle vakter:*\n${testVakterListe}`,
             },
         },
         {

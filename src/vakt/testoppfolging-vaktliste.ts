@@ -27,8 +27,10 @@ export function hentNesteFemDagersTestoppfolgingsVakter() {
     const numberOfSundaysSinceEpoc = Math.floor((daysSinceEpoc + 5) / 7);
     const daysSinceEpocWithoutWeekends = daysSinceEpoc - numberOfSaturdaysSinceEpoc - numberOfSundaysSinceEpoc;
 
+    // legger til offset siden vi nå skal poste denne på fredager og vise neste ukes vakter
+    const offsetFraFredagUtenHelgedager = 1
     const nesteFemDagerVakter = Array.from({ length: 5 }, (_, index) => {
-        const vaktIndex = (daysSinceEpocWithoutWeekends + index) % utviklere.length;
+        const vaktIndex = (daysSinceEpocWithoutWeekends + index + offsetFraFredagUtenHelgedager) % utviklere.length;
         return `${format(new Date(2023, 0, index + 2), 'EEEE', { locale: nb })}: ${utviklere[vaktIndex]}`;
     });
 
