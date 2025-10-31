@@ -27,6 +27,10 @@ export function setupVaktJob(app: App) {
 
 
         const dagensTekniskeVakt = hentDagensTekniskeVakt();
+        await app.client.usergroups.users.update({
+          usergroup: 'S09PXJ3DJQ2',
+          users: dagensTekniskeVakt,
+        });
         const dagensTestVakt = hentDagensTestoppfolgingsVakt();
 
         const dailyBlocks = vaktBlocks(dagensTekniskeVakt, dagensTestVakt);
@@ -80,21 +84,4 @@ export function setupVaktJob(app: App) {
     const job = new CronJob(time, onTick, null, false, TIMEZONE)
 
     job.start()
-}
-
-export function updateVaktUserGroup(app: App) {
-  async function onTick() {
-    const res = await app.client.usergroups.users.update({
-      usergroup: 'S09PXJ3DJQ2',
-      users: 'U02EFCUUQF8',
-    });
-    console.log('oppdatert gruppe')
-    console.log(res)
-  }
-  const time = '17 15 * * 1-5' // kl 11:11:11, man-fre, alle uker, alle måneder
-  console.log(`Init cronjob oppdatergruppe with crontime: ${time}`)
-  const job = new CronJob(time, onTick, null, false, TIMEZONE)
-
-  job.start()
-
 }
