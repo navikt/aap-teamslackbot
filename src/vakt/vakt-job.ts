@@ -91,7 +91,8 @@ export function updateVaktUserGroup(app: App) {
     console.log('oppdatert gruppe')
     console.log(res)
   }
-  const time = '06 14 * * 1-5' // kl 11:11:11, man-fre, alle uker, alle måneder
+  const time = '17 15 * * 1-5' // kl 11:11:11, man-fre, alle uker, alle måneder
+  console.log(`Init cronjob oppdatergruppe with crontime: ${time}`)
   const job = new CronJob(time, onTick, null, false, TIMEZONE)
 
   job.start()
