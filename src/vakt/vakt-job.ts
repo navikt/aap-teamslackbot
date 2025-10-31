@@ -84,12 +84,14 @@ export function setupVaktJob(app: App) {
 
 export function updateVaktUserGroup(app: App) {
   async function onTick() {
-    await app.client.usergroups.users.update({
+    const res = await app.client.usergroups.users.update({
       usergroup: 'S09PXJ3DJQ2',
       users: 'U02EFCUUQF8',
     });
+    console.log('oppdatert gruppe')
+    console.log(res)
   }
-  const time = '56 13 * * 1-5' // kl 11:11:11, man-fre, alle uker, alle måneder
+  const time = '06 14 * * 1-5' // kl 11:11:11, man-fre, alle uker, alle måneder
   const job = new CronJob(time, onTick, null, false, TIMEZONE)
 
   job.start()
