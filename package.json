@@ -4,7 +4,8 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "node src/index.ts",
-    "build": "tsc -p tsconfig.json"
+    "build": "tsc -p tsconfig.json",
+    "dev": "node --env-file=.env.local dist/index.js"
   },
   "dependencies": {
     "@slack/bolt": "3.22.0",

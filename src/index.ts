@@ -2,7 +2,7 @@ import {ParamsIncomingMessage} from "@slack/bolt/dist/receivers/ParamsIncomingMe
 import {ServerResponse} from "http";
 
 import {App} from "@slack/bolt";
-import {setupVaktJob} from "./vakt/vakt-job";
+import {setupVaktJob, updateVaktUserGroup} from "./vakt/vakt-job";
 import {setupShowAndTellJob} from "./workplace/show-and-tell-job";
 import {setupEventListener} from "./events";
 import {setupWorkplaceJob} from "./workplace/workplace-poll-job";
@@ -35,6 +35,7 @@ const app = new App({
     setupWorkplaceJob(app);
     setupShowAndTellJob(app);
     setupVaktJob(app);
+    updateVaktUserGroup(app);
 
     console.log(`⚡️ Bolt app is running on port ${PORT}!`);
 })();
