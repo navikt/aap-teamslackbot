@@ -25,12 +25,15 @@ export function setupVaktJob(app: App) {
             return
         }
 
-
-        const dagensTekniskeVakt = hentDagensTekniskeVakt();
+        const dagensTekniskeVakt = ['U01CH1LE2FK',      // Nicolas
+            'U08EGKCC8FM',      // Selma
+            'U03LBKLNNAF',      // Vetle
+        ]
+            /*hentDagensTekniskeVakt();
         await app.client.usergroups.users.update({
           usergroup: 'S09PXJ3DJQ2',
           users: dagensTekniskeVakt,
-        });
+        });*/
         const dagensTestVakt = hentDagensTestoppfolgingsVakt();
 
         const dailyBlocks = vaktBlocks(dagensTekniskeVakt, dagensTestVakt);

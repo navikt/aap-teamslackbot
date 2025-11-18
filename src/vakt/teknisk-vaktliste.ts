@@ -20,6 +20,14 @@ const utviklere = [
   'UEHPV7NAE',        // Matias
   'U02KTLW1QLC',      // Øivind
 ]
+
+
+/*
+
+  'U01CH1LE2FK',      // Nicolas
+  'U08EGKCC8FM',      // Selma
+  'U03LBKLNNAF',      // Vetle
+ */
 export function hentDagensTekniskeVakt() {
     var daysSinceEpoc = Math.floor(Date.now() / 24 / 60 / 60 / 1000)
     var numberOfSaturdaysSinceEpoc = Math.floor((daysSinceEpoc + 4) / 7)
