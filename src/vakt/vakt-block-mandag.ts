@@ -4,8 +4,8 @@ export function vaktBlocksFredag(nesteUkesTekniskeVakter: string[],
     const rutineLink = "<https://confluence.adeo.no/x/xzA1Jg|Rutine>";
 
     const tekniskeVakterListe = nesteUkesTekniskeVakter
-        .map((vakt) => `${vakt.split(': ')[0]} - <@${vakt.split(': ')[1]}>`)
-        .join('\n');
+        .map((vakt) => `<@${vakt}>`)
+        .join(', ');
     const testVakterListe = nesteUkesTestVakter
         .map((vakt) => `${vakt.split(': ')[0]} - <@${vakt.split(': ')[1]}>`)
         .join('\n');
