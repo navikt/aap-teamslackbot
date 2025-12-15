@@ -5,7 +5,10 @@ export type WorkplaceBlock = {
     text: MrkdwnElement;
     accessory: SectionBlockAccessory;
 } | { type: 'divider'}
+/*
 
+            "text": ":zoom-icon: Hjemme / Zoom \`2\`\n <@U03LBKLNNAF>, <@U07946678MA>"
+ */
 const blocks: WorkplaceBlock[] = [
     {
         "type": "divider"
@@ -14,7 +17,7 @@ const blocks: WorkplaceBlock[] = [
         "type": "section",
         "text": {
             "type": "mrkdwn",
-            "text": ":zoom-icon: Hjemme / Zoom \`2\`\n <@U03LBKLNNAF>, <@U07946678MA>"
+            "text": ":zoom-icon: Hjemme / Zoom \`2\`\n "
         },
         "accessory": {
             "type": "button",
