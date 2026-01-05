@@ -7,7 +7,7 @@ export type WorkplaceBlock = {
 } | { type: 'divider'}
 /*
 
-            "text": ":zoom-icon: Hjemme / Zoom \`2\`\n <@U03LBKLNNAF>, <@U07946678MA>"
+            "text": ":zoom-icon: Hjemme / Zoom \`1\`\n <@U03LBKLNNAF>, <@U07946678MA>"
  */
 const blocks: WorkplaceBlock[] = [
     {
@@ -17,7 +17,7 @@ const blocks: WorkplaceBlock[] = [
         "type": "section",
         "text": {
             "type": "mrkdwn",
-            "text": ":zoom-icon: Hjemme / Zoom \`2\`\n "
+            "text": ":zoom-icon: Hjemme / Zoom \`1\`\n <@U03LBKLNNAF>"
         },
         "accessory": {
             "type": "button",
