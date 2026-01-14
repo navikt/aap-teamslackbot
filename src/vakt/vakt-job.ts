@@ -26,7 +26,6 @@ export function setupVaktJob(app: App) {
 
         const dagensTekniskeVakt = ['U01CH1LE2FK',      // Nicolas
             'U08EGKCC8FM',      // Selma
-            'U03LBKLNNAF',      // Vetle
         ]
             /*hentDagensTekniskeVakt();
         await app.client.usergroups.users.update({
