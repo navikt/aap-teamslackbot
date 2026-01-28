@@ -24,14 +24,7 @@ export function setupVaktJob(app: App) {
             return
         }
 
-        const dagensTekniskeVakt = ['U01CH1LE2FK',      // Nicolas
-            'U08EGKCC8FM',      // Selma
-        ]
-            /*hentDagensTekniskeVakt();
-        await app.client.usergroups.users.update({
-          usergroup: 'S09PXJ3DJQ2',
-          users: dagensTekniskeVakt,
-        });*/
+        const dagensTekniskeVakt = ['S09TTUN3FC4'] // aap-vaskebjørn
         const dagensTestVakt = hentDagensTestoppfolgingsVakt();
 
         const dailyBlocks = vaktBlocks(dagensTekniskeVakt, dagensTestVakt);

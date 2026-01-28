@@ -1,5 +1,6 @@
-export function vaktBlocksFredag(nesteUkesTekniskeVakter: string[],
-                                 nesteUkesTestVakter: string[]
+export function vaktBlocksFredag(
+  nesteUkesTekniskeVakter: string[],
+  nesteUkesTestVakter: string[]
 ) {
     const rutineLink = "<https://confluence.adeo.no/x/xzA1Jg|Rutine>";
 
