@@ -24,7 +24,13 @@ export function setupVaktJob(app: App) {
             return
         }
 
-        const dagensTekniskeVakt = ['S09TTUN3FC4'] // aap-vaskebjørn
+        const dagensTekniskeVakt = [
+          'U01CH1LE2FK',      // Nicolas
+          'U08EGKCC8FM',      // Selma
+          // TODO: Legg til når klare for overgang til vaskebjørn
+          // 'U08EGKCC8FM',      // Hein
+          // 'U08EGKCC8FM',      // Thao
+        ]
         const dagensTestVakt = hentDagensTestoppfolgingsVakt();
 
         const dailyBlocks = vaktBlocks(dagensTekniskeVakt, dagensTestVakt);
