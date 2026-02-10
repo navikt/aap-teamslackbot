@@ -469,10 +469,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@slack/types@npm:^2.19.0":
-  version: 2.19.0
-  resolution: "@slack/types@npm:2.19.0"
-  checksum: cdee616f4b457a15855ea7b45f5069f0bcf8a2754e2f32719c532a9c4bda73c5e70032f0edc153f6794b667ceb4bcaf539c792a98a2b55fbbb8106acca4b7366
+"@slack/types@npm:^2.20.0":
+  version: 2.20.0
+  resolution: "@slack/types@npm:2.20.0"
+  checksum: 55443171909c71d42763ee352dc414c421cc2fa3e9766c1497fe03da19d623ab2f4c47b010c8ad215c95d79f1db721dfa18e7c77156bbba3af2fb7c884740ea7
   languageName: node
   linkType: hard
 
@@ -771,7 +771,7 @@ __metadata:
   resolution: "aap-teamslackbot@workspace:."
   dependencies:
     "@slack/bolt": 3.22.0
-    "@slack/types": ^2.19.0
+    "@slack/types": ^2.20.0
     "@types/node": ^22.19.1
     cron: ^3.1.4
     date-fns: ^4.1.0
