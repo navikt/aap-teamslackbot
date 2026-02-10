@@ -1,11 +1,19 @@
 import {isDateAHoliday} from "../utils/holidays";
+import {imorgenDateString, tomorrowDate, ukedagNavn} from "../utils/date";
 import {App} from "@slack/bolt";
 import {addDays} from "date-fns";
 
 const CronJob = require('cron').CronJob
-const initWorkplaceBlocks = require("./workplace-blocks")
+const blocksTeamAap = require("./workplace-blocks")
+const blocksTeamMigrering = require("./workplace-migrering-blocks")
 
 const TIMEZONE = 'Europe/Oslo'
+
+
+const channelsAndBlocks = [
+    { channel: 'C067RJV8F89', blocks: blocksTeamAap }, // #team-aap-privat
+    { channel: 'C0ACRS43KGA', blocks: blocksTeamMigrering }, // #team-aap-ut-av-arena-inn-i-kelvin-privat
+]
 
 const now = () => {
     return new Date()
@@ -25,26 +33,31 @@ export function setupWorkplaceJob(app: App) {
             return
         }
 
-        let title;
-        if (dayNumber === 5) {
-            title = "Endelig helg! :star-struck: Hvor skal du jobbe på mandag?"
-        } else {
-            title = `Hvor skal du jobbe i morgen, ${ukedagNavn(dayNumber + 1)} ${imorgenDateString()}?`
-        }
+        const headingBlock = {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": (dayNumber === 5) ?
+                    "Endelig helg! :star-struck: Hvor skal du jobbe på mandag?"
+                    : `Hvor skal du jobbe i morgen, ${ukedagNavn(dayNumber + 1)} ${imorgenDateString()}?`
+            }
+        };
 
         try {
-            const result = await app.client.chat.postMessage({
-                // channel: 'aap-teamslackbot-test', // Test channel
-                channel: 'C067RJV8F89', // team-aap-privat
-                blocks: initWorkplaceBlocks(title),
-                text: 'Should display blocks containing buttons to select workplace'
-            })
+            const promises = channelsAndBlocks.map(async ({channel, blocks}) => {
+                const result = await app.client.chat.postMessage({
+                    channel,
+                    blocks: [headingBlock, ...blocks],
+                    text: 'Should display blocks containing buttons to select workplace'
+                })
 
-            if (result.ok) {
-                console.log('Message sent OK')
-            } else {
-                console.error(`Error on postMessage: ${result.error}`)
-            }
+                if (result.ok) {
+                    console.log(`Message sent OK for channel: ${channel}`);
+                } else {
+                    console.error(`Error on postMessage for channel: ${channel}: ${result.error}`)
+                }
+            })
+            await Promise.all(promises)
         } catch (e) {
             console.error(e)
         }
@@ -58,21 +71,4 @@ export function setupWorkplaceJob(app: App) {
     const job = new CronJob(time, onTick, null, false, TIMEZONE)
 
     job.start()
-}
-function ukedagNavn(dayNumber: number) {
-    const dayNames = ['Søndag', 'Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag']
-    return dayNames[dayNumber];
-}
-function imorgenDateString() {
-    const today = new Date()
-    const tomorrow = new Date(today)
-    tomorrow.setDate(today.getDate() + 1)
-    const monthNames = ['Januar', 'Februar','Mars', 'April','Mai', 'Juni','Juli', 'August','September','Oktober', 'November', 'Desember']
-    return `${tomorrow.getDate()}. ${monthNames[tomorrow.getMonth()]}`
-}
-function tomorrowDate() {
-    const today = new Date()
-    const tomorrow = new Date(today)
-    tomorrow.setDate(today.getDate() + 1)
-    return tomorrow;
 }
