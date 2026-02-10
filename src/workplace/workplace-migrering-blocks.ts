@@ -5,6 +5,7 @@ export type WorkplaceBlock = {
     text: MrkdwnElement;
     accessory: SectionBlockAccessory;
 } | { type: 'divider'}
+
 const blocks: WorkplaceBlock[] = [
     {
         "type": "divider"
@@ -96,16 +97,4 @@ const blocks: WorkplaceBlock[] = [
     }
 ]
 
-const initWorkplaceMigreringBlocks = (title: string) => {
-    const heading = {
-        "type": "section",
-        "text": {
-            "type": "mrkdwn",
-            "text": title
-        }
-    }
-
-    return [heading, ...blocks]
-}
-
-module.exports = initWorkplaceMigreringBlocks
+module.exports = blocks

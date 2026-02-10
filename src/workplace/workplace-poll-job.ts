@@ -4,14 +4,15 @@ import {App} from "@slack/bolt";
 import {addDays} from "date-fns";
 
 const CronJob = require('cron').CronJob
-const initWorkplaceBlocks = require("./workplace-blocks")
-const initWorkplaceMigreringBlocks = require("./workplace-migrering-blocks")
+const blocksTeamAap = require("./workplace-blocks")
+const blocksTeamMigrering = require("./workplace-migrering-blocks")
 
 const TIMEZONE = 'Europe/Oslo'
 
+
 const channelsAndBlocks = [
-    { channel: 'C067RJV8F89', initBlocks: initWorkplaceBlocks }, // #team-aap-privat
-    { channel: 'C0ACRS43KGA', initBlocks: initWorkplaceMigreringBlocks }, // #team-aap-ut-av-arena-inn-i-kelvin-privat
+    { channel: 'C067RJV8F89', blocks: blocksTeamAap }, // #team-aap-privat
+    { channel: 'C0ACRS43KGA', blocks: blocksTeamMigrering }, // #team-aap-ut-av-arena-inn-i-kelvin-privat
 ]
 
 const now = () => {
@@ -32,18 +33,21 @@ export function setupWorkplaceJob(app: App) {
             return
         }
 
-        let title;
-        if (dayNumber === 5) {
-            title = "Endelig helg! :star-struck: Hvor skal du jobbe på mandag?"
-        } else {
-            title = `Hvor skal du jobbe i morgen, ${ukedagNavn(dayNumber + 1)} ${imorgenDateString()}?`
-        }
+        const headingBlock = {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": (dayNumber === 5) ?
+                    "Endelig helg! :star-struck: Hvor skal du jobbe på mandag?"
+                    : `Hvor skal du jobbe i morgen, ${ukedagNavn(dayNumber + 1)} ${imorgenDateString()}?`
+            }
+        };
 
         try {
-            const promises = channelsAndBlocks.map(async ({channel, initBlocks}) => {
+            const promises = channelsAndBlocks.map(async ({channel, blocks}) => {
                 const result = await app.client.chat.postMessage({
                     channel,
-                    blocks: initBlocks(title),
+                    blocks: [headingBlock, ...blocks],
                     text: 'Should display blocks containing buttons to select workplace'
                 })
 

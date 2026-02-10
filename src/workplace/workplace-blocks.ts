@@ -100,16 +100,4 @@ const blocks: WorkplaceBlock[] = [
     }
 ]
 
-const initWorkplaceBlocks = (title: string) => {
-    const heading = {
-        "type": "section",
-        "text": {
-            "type": "mrkdwn",
-            "text": title
-        }
-    }
-
-    return [heading, ...blocks]
-}
-
-module.exports = initWorkplaceBlocks
+module.exports = blocks
