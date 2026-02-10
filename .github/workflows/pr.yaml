@@ -1,0 +1,32 @@
+name: Build and deploy main
+
+on:
+  workflow_dispatch: # Allow manually triggered workflow run
+  pull_request:
+    paths-ignore:
+      - '**.md'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      SKIP_YARN_COREPACK_CHECK: true
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          registry-url: https://npm.pkg.github.com
+          cache: yarn
+      - name: Enable Corepack
+        run: corepack enable
+      - name: Install dependencies
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
+        if: steps.cache-node_modules.outputs.cache-hit != 'true'
+        run: yarn install --immutable
+      - name: Build
+        run: yarn build
