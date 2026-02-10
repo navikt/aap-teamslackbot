@@ -1,11 +1,18 @@
 import {isDateAHoliday} from "../utils/holidays";
+import {imorgenDateString, tomorrowDate, ukedagNavn} from "../utils/date";
 import {App} from "@slack/bolt";
 import {addDays} from "date-fns";
 
 const CronJob = require('cron').CronJob
 const initWorkplaceBlocks = require("./workplace-blocks")
+const initWorkplaceMigreringBlocks = require("./workplace-migrering-blocks")
 
 const TIMEZONE = 'Europe/Oslo'
+
+const channelsAndBlocks = [
+    { channel: 'C067RJV8F89', initBlocks: initWorkplaceBlocks }, // #team-aap-privat
+    { channel: 'C0ACRS43KGA', initBlocks: initWorkplaceMigreringBlocks }, // #team-aap-ut-av-arena-inn-i-kelvin-privat
+]
 
 const now = () => {
     return new Date()
@@ -33,18 +40,20 @@ export function setupWorkplaceJob(app: App) {
         }
 
         try {
-            const result = await app.client.chat.postMessage({
-                // channel: 'aap-teamslackbot-test', // Test channel
-                channel: 'C067RJV8F89', // team-aap-privat
-                blocks: initWorkplaceBlocks(title),
-                text: 'Should display blocks containing buttons to select workplace'
-            })
+            const promises = channelsAndBlocks.map(async ({channel, initBlocks}) => {
+                const result = await app.client.chat.postMessage({
+                    channel,
+                    blocks: initBlocks(title),
+                    text: 'Should display blocks containing buttons to select workplace'
+                })
 
-            if (result.ok) {
-                console.log('Message sent OK')
-            } else {
-                console.error(`Error on postMessage: ${result.error}`)
-            }
+                if (result.ok) {
+                    console.log(`Message sent OK for channel: ${channel}`);
+                } else {
+                    console.error(`Error on postMessage for channel: ${channel}: ${result.error}`)
+                }
+            })
+            await Promise.all(promises)
         } catch (e) {
             console.error(e)
         }
@@ -58,21 +67,4 @@ export function setupWorkplaceJob(app: App) {
     const job = new CronJob(time, onTick, null, false, TIMEZONE)
 
     job.start()
-}
-function ukedagNavn(dayNumber: number) {
-    const dayNames = ['Søndag', 'Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag']
-    return dayNames[dayNumber];
-}
-function imorgenDateString() {
-    const today = new Date()
-    const tomorrow = new Date(today)
-    tomorrow.setDate(today.getDate() + 1)
-    const monthNames = ['Januar', 'Februar','Mars', 'April','Mai', 'Juni','Juli', 'August','September','Oktober', 'November', 'Desember']
-    return `${tomorrow.getDate()}. ${monthNames[tomorrow.getMonth()]}`
-}
-function tomorrowDate() {
-    const today = new Date()
-    const tomorrow = new Date(today)
-    tomorrow.setDate(today.getDate() + 1)
-    return tomorrow;
 }
