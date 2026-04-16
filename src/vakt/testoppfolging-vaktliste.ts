@@ -8,7 +8,6 @@ const funksjonelle = [
   'UD59YS6TC', // Øyvind
   'U089U7GCC7L', // Thea
   'U06LEHE93GE', // Henning
-  'USA3XHAF6', // Sara
 ]
 
 export function hentDagensTestoppfolgingsVakt() {
