@@ -34,7 +34,8 @@ const app = new App({
 
     setupWorkplaceJob(app);
     setupShowAndTellJob(app);
-    setupVaktJob(app);
+    // skrur av vaktposten pga omorganisering
+    // setupVaktJob(app);
 
     console.log(`⚡️ Bolt app is running on port ${PORT}!`);
 })();
