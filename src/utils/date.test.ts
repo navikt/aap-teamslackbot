@@ -6,9 +6,9 @@ import {isDateAHoliday} from "./holidays";
 
 describe('date', () => {
   it('isByWeekly', () => {
-    const startDate = parse('14/02/2025', 'dd/MM/yyyy', new Date())
-    const testDateNo = parse('21/02/2025', 'dd/MM/yyyy', new Date())
-    const testDateYes = parse('28/02/2025', 'dd/MM/yyyy', new Date())
+    const startDate = parse('25/09/2026', 'dd/MM/yyyy', new Date())
+    const testDateNo = parse('02/10/2026', 'dd/MM/yyyy', new Date())
+    const testDateYes = parse('25/09/2026', 'dd/MM/yyyy', new Date())
     expect(isByWeeklyDate(startDate, testDateNo)).toBe(false)
     expect(isByWeeklyDate(startDate, testDateYes)).toBe(true)
   })

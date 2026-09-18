@@ -7,7 +7,7 @@ const showAndTellBlocks = require("./show-and-tell-blocks");
 const {parse} = require("date-fns");
 
 const TIMEZONE = 'Europe/Oslo'
-const startDateBiWeekly = parse('21/02/2025', 'dd/MM/yyyy', new Date())
+const startDateBiWeekly = parse('25/09/2026', 'dd/MM/yyyy', new Date())
 
 const now = () => {
     return new Date()
